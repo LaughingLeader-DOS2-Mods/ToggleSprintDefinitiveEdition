@@ -13,7 +13,7 @@ IF "c1"
 	CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT)
 THEN
 	IF "!c1"
-		HasGlobalFlag("ToggleSprint_HideStatuses")
+		HasGlobalFlag("LLSPRINT_SprintingStatusHidden")
 	THEN
 		CharacterApplyStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, -1)
 	ELSE
@@ -39,8 +39,8 @@ ENDIF
 
 EVENT LLSPRINT_ToggleInfoStatus
 ON
-	OnGlobalFlagCleared("ToggleSprint_HideStatuses")
-	OnGlobalFlagSet("ToggleSprint_HideStatuses")
+	OnGlobalFlagCleared("LLSPRINT_SprintingStatusHidden")
+	OnGlobalFlagSet("LLSPRINT_SprintingStatusHidden")
 ACTIONS
 	IterateParty("ToggleSprint_Iterator_ToggleInfoStatus")
 

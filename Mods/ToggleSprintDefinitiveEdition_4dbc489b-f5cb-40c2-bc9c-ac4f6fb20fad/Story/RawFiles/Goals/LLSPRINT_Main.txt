@@ -27,7 +27,7 @@ DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_11", "LLSPRINT_Speed11_ca8453d5-8
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_12", "LLSPRINT_Speed12_1c2839f9-3e48-48e7-8b60-b159ce2e64b7", 10.0);
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_13", "LLSPRINT_Speed13_c9a462e0-07cc-4d2f-bb15-b1119739ab21", 11.0);
 
-DB_ToggleSprint_DefaultSpeed("ToggleSprint_Speed_06");
+DB_ToggleSprint_DefaultSpeed("ToggleSprint_Speed_03");
 
 PROC
 LLSPRINT_Updater_UpdateSettings((STRING)_Version)
@@ -475,6 +475,20 @@ AND
 DB_LLSPRINT_SprintStatusToggled(_Character)
 THEN
 NOT DB_LLSPRINT_SprintStatusToggled(_Character);
+
+IF
+CharacterStatusApplied(_Character, "LLSPRINT_TOGGLESPRINT", _)
+AND
+GlobalGetFlag("LLSPRINT_SprintingStatusHidden", 1)
+THEN
+CharacterStatusText(_Character, "LLSPRINT_StatusText_SprintingEnabled");
+
+IF
+CharacterStatusRemoved(_Character, "LLSPRINT_TOGGLESPRINT", _)
+AND
+GlobalGetFlag("LLSPRINT_SprintingStatusHidden", 1)
+THEN
+CharacterStatusText(_Character, "LLSPRINT_StatusText_SprintingDisabled");
 //END_REGION
 
 //REGION VERSIONING
