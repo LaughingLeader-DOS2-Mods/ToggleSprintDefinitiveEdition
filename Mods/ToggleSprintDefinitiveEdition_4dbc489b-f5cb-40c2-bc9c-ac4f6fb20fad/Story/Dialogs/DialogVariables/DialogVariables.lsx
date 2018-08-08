@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1533727224" />
+    <version major="3" minor="1" revision="8" build="0" />
+    <region id="DialogVariables">
+        <node id="root">
+            <children>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="ababef8c-c917-4fc2-8140-4d154cf6b49c" type="31" />
+                    <attribute id="name" value="LLSPRINT_CurrentSpeed" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="466add38-bab6-446c-90f0-9f067886a734" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed01" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="5c20442d-b73a-45f0-a22a-569958263c1b" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed02" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="c176cda1-3ce5-401d-bcba-10d9f136e3ec" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed03" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="885b4609-c38d-46d4-bb5a-e61087b58280" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed04" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="f5c50ba6-f41f-40a0-951a-9bb97d0569ad" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed05" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="fcacc826-a01b-429e-8247-cf03d4eee922" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed06" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="b21b24c7-6a19-4f69-a852-0820ae31e8c8" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed07" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="fc6eaba6-f64f-4acf-83d7-167c1acf082f" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed08" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="4893730f-1deb-41a4-bae3-d7e7ed3d67f5" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed09" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="4efd0366-0bc5-405a-8861-038778201a2a" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed10" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="ca8453d5-8330-4148-98e5-04f93b424ccb" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed11" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="1c2839f9-3e48-48e7-8b60-b159ce2e64b7" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed12" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="c9a462e0-07cc-4d2f-bb15-b1119739ab21" type="31" />
+                    <attribute id="name" value="LLSPRINT_Speed13" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="5.0" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="c9ddbb10-7213-48e2-904a-2b7ec049beef" type="31" />
+                    <attribute id="name" value="LLSPRINT_SpeedDefault" type="22" />
+                    <attribute id="type" value="Float" type="23" />
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

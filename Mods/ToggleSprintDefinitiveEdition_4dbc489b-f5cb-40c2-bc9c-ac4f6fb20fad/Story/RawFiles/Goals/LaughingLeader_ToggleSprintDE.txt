@@ -1,0 +1,34 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLSPRINT_Internal_CompleteIfStarted();
+KBSECTION
+PROC
+LLSPRINT_Internal_Start()
+THEN
+DebugBreak("[LLSPRINT] Toggle Sprint Definition Edition starting.");
+GoalCompleted;
+
+IF
+GameEventSet("GAMEEVENT_GameStarted")
+THEN
+LLSPRINT_Internal_Start();
+
+PROC
+LLSPRINT_Internal_CompleteIfStarted()
+AND
+DB_StoryStarted(_)
+THEN
+DebugBreak("[LLSPRINT] Existing save detected. Starting LLSPRINT.");
+LLSPRINT_Internal_Start();
+
+IF
+SavegameLoaded(_,_,_,_)
+AND
+DB_StoryStarted(_)
+THEN
+DebugBreak("[LLSPRINT] Existing save detected. Starting LLSPRINT.");
+LLSPRINT_Internal_Start();
+EXITSECTION
+
+ENDEXITSECTION

@@ -1,0 +1,24 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLSPRINT_Debug_Start();
+KBSECTION
+PROC
+LLSPRINT_Debug_Start()
+THEN
+GlobalClearFlag("LLSPRINT_Debug_LevelReady");
+TimerLaunch("LLSPRINT_Timers_Debug_SetupParty", 200);
+
+IF
+TimerFinished("LLSPRINT_Timers_Debug_SetupParty")
+THEN
+GlobalSetFlag("LLSPRINT_Debug_LevelReady");
+
+IF
+StoryEvent((CHARACTERGUID)_Character, "LLSPRINT_Commands_StartSprinting")
+THEN
+CharacterUseSkill(_Character, "Shout_LLSPRINT_StartSprinting", _Character, 1, 1, 1);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLSPRINT_Debug"

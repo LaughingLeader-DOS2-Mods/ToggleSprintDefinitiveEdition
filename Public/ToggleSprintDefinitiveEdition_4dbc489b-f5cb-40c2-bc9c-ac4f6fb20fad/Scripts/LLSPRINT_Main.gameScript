@@ -1,0 +1,96 @@
+INIT
+	
+EVENTS
+
+EVENT LLSPRINT_SprintInfoStatus
+VARS
+	CHARACTER:_Character
+ON
+	OnCharacterStatusApplied(_Character, LLSPRINT_TOGGLESPRINT)
+	OnIterateCharacter(_Character, "ToggleSprint_Iterator_ToggleInfoStatus")
+ACTIONS
+IF "c1"
+	CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT)
+THEN
+	IF "!c1"
+		HasGlobalFlag("ToggleSprint_HideStatuses")
+	THEN
+		CharacterApplyStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, -1)
+	ELSE
+		IF "c1"
+			CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO)
+		THEN
+			CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, null, 0)
+		ENDIF
+	ENDIF
+ENDIF
+
+EVENT LLSPRINT_RemoveSprintInfoStatus
+VARS
+	CHARACTER:_Character
+ON
+	OnCharacterStatusRemoved(_Character, LLSPRINT_TOGGLESPRINT)
+ACTIONS
+IF "c1"
+	CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO)
+THEN
+	CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, null, 0)
+ENDIF
+
+EVENT LLSPRINT_ToggleInfoStatus
+ON
+	OnGlobalFlagCleared("ToggleSprint_HideStatuses")
+	OnGlobalFlagSet("ToggleSprint_HideStatuses")
+ACTIONS
+	IterateParty("ToggleSprint_Iterator_ToggleInfoStatus")
+
+EVENT LLSPRINT_SetSpeed
+VARS
+	CHARACTER:_Character
+	FLOAT:_Speed
+ON
+	OnCharacterStatusApplied(_Character, LLSPRINT_TOGGLESPRINT)
+	OnCharacterEvent(_Character, "ToggleSprint_Commands_UpdateSpeed")
+ACTIONS
+IF "c1&c2"
+	CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT)
+	GetVar(_Speed, _Character, "ToggleSprint_SprintSpeed")
+THEN
+	CharacterSetRunSpeedOverride(_Character, 1, _Speed)
+ELSE
+	CharacterSetRunSpeedOverride(_Character, 0)
+ENDIF
+
+EVENT LLSPRINT_ClearSpeed
+VARS
+	CHARACTER:_Character
+ON
+	OnCharacterStatusRemoved(_Character, LLSPRINT_TOGGLESPRINT)
+ACTIONS
+	CharacterSetRunSpeedOverride(_Character, 0)
+	
+EVENT LLSPRINT_EnteredCombat
+VARS
+	CHARACTER:_Character
+ON
+	OnEnteredCombat(_Character, _)
+ACTIONS
+IF "c1"
+	CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT)
+THEN
+	CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT)
+	SetFlag(_Character, "ToggleSprint_WasSprinting")
+ENDIF
+
+EVENT LLSPRINT_LeftCombat
+VARS
+	CHARACTER:_Character
+ON
+	OnLeftCombat(_Character, _)
+ACTIONS
+IF "c1"
+	HasFlag(_Character, "ToggleSprint_WasSprinting")
+THEN
+	ClearFlag(_Character, "ToggleSprint_WasSprinting")
+	CharacterApplyStatus(_Character, LLSPRINT_TOGGLESPRINT, -1, 1, _Character)
+ENDIF

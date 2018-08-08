@@ -1,0 +1,358 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLSPRINT_InitSettings();
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.0");
+
+//DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+//DB_LLSPRINT_PartySpeed(_Flag)
+KBSECTION
+//REGION SETTINGS
+PROC
+LLSPRINT_InitSettings()
+THEN
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_Default", "LLSPRINT_SpeedDefault_c9ddbb10-7213-48e2-904a-2b7ec049beef", 5.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_01", "LLSPRINT_Speed01_466add38-bab6-446c-90f0-9f067886a734", 6.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_02", "LLSPRINT_Speed02_5c20442d-b73a-45f0-a22a-569958263c1b", 6.5);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_03", "LLSPRINT_Speed03_c176cda1-3ce5-401d-bcba-10d9f136e3ec", 7.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_04", "LLSPRINT_Speed04_885b4609-c38d-46d4-bb5a-e61087b58280", 7.5);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_05", "LLSPRINT_Speed05_f5c50ba6-f41f-40a0-951a-9bb97d0569ad", 8.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_06", "LLSPRINT_Speed06_fcacc826-a01b-429e-8247-cf03d4eee922", 8.5);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_07", "LLSPRINT_Speed07_b21b24c7-6a19-4f69-a852-0820ae31e8c8", 9.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_08", "LLSPRINT_Speed08_fc6eaba6-f64f-4acf-83d7-167c1acf082f", 9.5);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_09", "LLSPRINT_Speed09_4893730f-1deb-41a4-bae3-d7e7ed3d67f5", 10.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_10", "LLSPRINT_Speed10_4efd0366-0bc5-405a-8861-038778201a2a", 10.5);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_11", "LLSPRINT_Speed11_ca8453d5-8330-4148-98e5-04f93b424ccb", 11.0);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_12", "LLSPRINT_Speed12_1c2839f9-3e48-48e7-8b60-b159ce2e64b7", 11.5);
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_13", "LLSPRINT_Speed13_c9a462e0-07cc-4d2f-bb15-b1119739ab21", 12.0);
+
+PROC
+LLSPRINT_Updater_UpdateSettings((STRING)_Version)
+THEN
+SysClear("DB_ToggleSprint_SpeedFlags", 3);
+LLSPRINT_InitSettings();
+//END_REGION
+
+//REGION TOGGLE_SKILL
+IF
+CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _)
+THEN
+LLSPRINT_ToggleSprinting(_Character);
+
+PROC
+LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
+AND
+CharacterIsInCombat(_Character, 0)
+AND
+NOT DB_LLSPRINT_SprintStatusToggled(_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
+THEN
+ApplyStatus(_Character, "LLSPRINT_TOGGLESPRINT", -1.0, 1);
+DB_LLSPRINT_SprintStatusToggled(_Character);
+
+PROC
+LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
+AND
+CharacterIsInCombat(_Character, 0)
+AND
+NOT DB_LLSPRINT_SprintStatusToggled(_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+RemoveStatus(_Character, "LLSPRINT_TOGGLESPRINT");
+DB_LLSPRINT_SprintStatusToggled(_Character);
+
+PROC
+LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
+AND
+DB_LLSPRINT_SprintStatusToggled(_Character)
+THEN
+NOT DB_LLSPRINT_SprintStatusToggled(_Character);
+//END_REGION
+
+//REGION SPEED_EVENTS
+IF
+ObjectFlagSet(_Flag, (CHARACTERGUID)_Character, _)
+AND
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+LLSPRINT_SetSpeed(_Character, _SpeedVal);
+
+IF
+ObjectFlagSet(_Flag, (CHARACTERGUID)_Character, _Instance)
+AND
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _SpeedVal);
+LLSPRINT_ClearLastSpeedFlag(_Character, _Flag);
+SetVarString(_Character, "ToggleSprint_CurrentSpeedFlag", _Flag);
+
+PROC
+LLSPRINT_ClearLastSpeedFlag((CHARACTERGUID)_Character, (STRING)_NextFlag)
+AND
+GetVarString(_Character, "ToggleSprint_CurrentSpeedFlag", _CurrentFlag)
+AND
+_NextFlag != _CurrentFlag
+THEN
+ObjectClearFlag(_Character, _CurrentFlag);
+
+QRY
+LLSPRINT_QRY_SpeedFlagVariableSet((CHARACTERGUID)_Character)
+AND
+GetVarString(_Character, "ToggleSprint_CurrentSpeedFlag", _CurrentFlag)
+AND
+_CurrentFlag != ""
+THEN
+DB_NOOP(1);
+
+//Reset to the default speed
+IF
+ObjectFlagCleared(_Flag, (CHARACTERGUID)_Character, _Instance)
+AND
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+AND
+NOT ToggleSprint_QRY_HasSpeedFlag(_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+AND
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_Default", _DefaultDialogVar, _DefaultSpeedVal)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _DefaultSpeedVal);
+LLSPRINT_SetSpeed(_Character, _DefaultSpeedVal);
+
+QRY
+ToggleSprint_QRY_HasSpeedFlag((CHARACTERGUID)_Character)
+AND
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+AND
+ObjectGetFlag(_Character, _Flag, 1)
+THEN
+DB_NOOP(1);
+
+PROC
+LLSPRINT_SetSpeed((CHARACTERGUID)_Character, (REAL)_SpeedVal)
+THEN
+SetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SpeedVal);
+SetStoryEvent(_Character, "ToggleSprint_Commands_UpdateSpeed");
+//END_REGION
+
+//REGION PARTY_EVENTS
+IF
+CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _)
+AND
+NOT DB_LLSPRINT_PartySpeed(_)
+AND
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_02", _DialogVar, _SpeedVal)
+THEN
+DB_LLSPRINT_PartySpeed("ToggleSprint_Speed_02");
+PartySetFlag(_Character, "ToggleSprint_Speed_02");
+
+IF
+CharacterJoinedParty(_Character)
+AND
+LLSPRINT_QRY_UserIsSprinting(_Character)
+AND
+DB_LLSPRINT_PartySpeed(_Flag)
+AND
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+THEN
+SetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SpeedVal);
+SetVarString(_Character, "ToggleSprint_CurrentSpeedFlag", _Flag);
+LLSPRINT_ToggleSprinting(_Character);
+
+IF
+CharacterLeftParty(_Character)
+AND
+CharacterIsPlayer(_Character, 0)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+RemoveStatus(_Character, "LLSPRINT_TOGGLESPRINT");
+
+QRY
+LLSPRINT_QRY_UserIsSprinting((CHARACTERGUID)_Character)
+AND
+CharacterGetReservedUserID(_Character, _User)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetReservedUserID(_Player, _User)
+AND
+HasActiveStatus(_Player, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+DB_NOOP(1);
+//END_REGION
+
+//REGION RESURRECTED
+IF
+CharacterStatusAttempt(_Character, "DYING", _)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+ObjectSetFlag(_Character, "ToggleSprint_WasSprinting");
+
+IF
+CharacterStatusRemoved(_Character, "RESURRECT", _)
+AND
+ObjectGetFlag(_Character, "ToggleSprint_WasSprinting", 1)
+AND
+CharacterIsInCombat(_Character, 0)
+THEN
+ObjectClearFlag(_Character, "ToggleSprint_WasSprinting");
+LLSPRINT_ToggleSprinting(_Character);
+//END_REGION
+
+//REGION SETTINGS_MENU
+IF
+ObjectFlagSet("LLSPRINT_PartySpeedSet", (CHARACTERGUID)_Character, _Instance)
+AND
+GetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SprintSpeed)
+AND
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SprintSpeed)
+THEN
+LLSPRINT_StorePartySpeed(_Flag);
+
+PROC
+LLSPRINT_StorePartySpeed((STRING)_Flag)
+AND
+DB_LLSPRINT_PartySpeed(_OtherFlag)
+THEN
+NOT DB_LLSPRINT_PartySpeed(_OtherFlag);
+
+PROC
+LLSPRINT_StorePartySpeed((STRING)_Flag)
+THEN
+DB_LLSPRINT_PartySpeed(_Flag);
+
+IF
+ObjectFlagSet("LLSPRINT_PartySpeedSet", (CHARACTERGUID)_Character, _Instance)
+THEN
+ObjectClearFlag(_Character, "LLSPRINT_PartySpeedSet");
+
+IF
+DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
+THEN
+DialogSetVariableFloat("ToggleSprint_SettingsMenu", _DialogVar, _SpeedVal);
+
+IF
+DialogStarted("ToggleSprint_SettingsMenu", _Instance)
+AND
+DialogGetInvolvedPlayer(_Instance, 1, (CHARACTERGUID)_Player)
+AND
+LLSPRINT_QRY_SpeedVariableSet(_Player)
+AND
+GetVarFloat(_Player, "ToggleSprint_SprintSpeed", _SprintSpeed)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _SprintSpeed);
+
+IF
+DialogStarted("ToggleSprint_SettingsMenu", _Instance)
+AND
+DialogGetInvolvedPlayer(_Instance, 1, (CHARACTERGUID)_Player)
+AND
+NOT LLSPRINT_QRY_SpeedVariableSet(_Player)
+AND
+DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_Default", _DialogVar, _DefaultSpeed)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _DefaultSpeed);
+
+QRY
+LLSPRINT_QRY_SpeedVariableSet((CHARACTERGUID)_Character)
+AND
+GetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SprintSpeed)
+AND
+_SprintSpeed > 0
+THEN
+DB_NOOP(1);
+//END_REGION
+
+//REGION VERSIONING
+IF
+GameStarted(_,_)
+AND
+LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.0")
+THEN
+LLSPRINT_Updater_RemoveOldVersions();
+LLSPRINT_Updater_UpdateVersion("1.0.0.0");
+LLSPRINT_Updater_UpdateSettings("1.0.0.0");
+
+QRY
+LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
+AND
+NOT DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version)
+THEN
+DB_NOOP(1);
+
+PROC
+LLSPRINT_Updater_RemoveOldVersions()
+AND
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version)
+THEN
+NOT DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version);
+
+PROC
+LLSPRINT_Updater_UpdateVersion((STRING)_Version)
+AND
+GlobalGetFlag("LeaderLib_Initialized", 1)
+THEN
+DB_LeaderLib_ModApi_RegisterMod("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version);
+
+PROC
+LLSPRINT_Updater_UpdateVersion((STRING)_Version)
+AND
+NOT GlobalGetFlag("LeaderLib_Initialized", 1)
+THEN
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version);
+//END_REGION
+
+//REGION LEADERLIB
+IF
+StoryEvent(_, "LeaderLib_Initialized")
+AND
+NOT DB_ToggleSprint_RegisteredLeaderLibSettings(_)
+THEN
+DB_ToggleSprint_RegisteredLeaderLibSettings(1);
+
+IF
+DB_ToggleSprint_RegisteredLeaderLibSettings(1)
+THEN
+DB_LeaderLib_ModApi_RegisterActiveGoal("ToggleSprint_DefinitiveEdition", "LaughingLeader", "LLSPRINT_Main");
+DB_LeaderLib_ModApi_RegisterMenu("LaughingLeader_ToggleSprint_DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_Dialog_Settings", "ToggleSprint_DefinitiveEdition", "LaughingLeader");
+DB_LLLIB_Treasure_TreasureItemTemplates("LLLIB_LeaderTrader_ModBooks", "BOOK_ToggleSprint_Settings_4094ea08-749e-48d8-af6b-17af4a962fef", 1, "");
+DB_LLLIB_Treasure_ItemMaxAmount("LLLIB_LeaderTrader_ModBooks", "BOOK_ToggleSprint_Settings_4094ea08-749e-48d8-af6b-17af4a962fef", 1);
+//END_REGION
+
+//REGION DEBUG
+IF
+DB_IsPlayer(_Host)
+AND
+CharacterGetHostCharacter(_Host)
+AND
+UserGetFlag(_Host, "LLSPRINT_IsHost", 0)
+THEN
+UserSetFlag(_Host, "LLSPRINT_IsHost");
+
+IF
+DB_IsPlayer(_Host)
+AND
+NOT CharacterGetHostCharacter(_Host)
+AND
+UserGetFlag(_Host, "LLSPRINT_IsHost", 1)
+THEN
+UserClearFlag(_Host, "LLSPRINT_IsHost", 0);
+
+IF
+TextEventSet("togglesprint_openmenu")
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+UserSetFlag(_Host, "LLSPRINT_IsHost");
+Proc_StartDialog(0, "ToggleSprint_SettingsMenu", _Host, _Host);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_ToggleSprintDE"
