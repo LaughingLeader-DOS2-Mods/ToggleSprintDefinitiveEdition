@@ -33,44 +33,6 @@ SysClear("DB_ToggleSprint_SpeedFlags", 3);
 LLSPRINT_InitSettings();
 //END_REGION
 
-//REGION TOGGLE_SKILL
-IF
-CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _)
-THEN
-LLSPRINT_ToggleSprinting(_Character);
-
-PROC
-LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
-AND
-CharacterIsInCombat(_Character, 0)
-AND
-NOT DB_LLSPRINT_SprintStatusToggled(_Character)
-AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
-THEN
-ApplyStatus(_Character, "LLSPRINT_TOGGLESPRINT", -1.0, 1);
-DB_LLSPRINT_SprintStatusToggled(_Character);
-
-PROC
-LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
-AND
-CharacterIsInCombat(_Character, 0)
-AND
-NOT DB_LLSPRINT_SprintStatusToggled(_Character)
-AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
-THEN
-RemoveStatus(_Character, "LLSPRINT_TOGGLESPRINT");
-DB_LLSPRINT_SprintStatusToggled(_Character);
-
-PROC
-LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
-AND
-DB_LLSPRINT_SprintStatusToggled(_Character)
-THEN
-NOT DB_LLSPRINT_SprintStatusToggled(_Character);
-//END_REGION
-
 //REGION SPEED_EVENTS
 IF
 ObjectFlagSet(_Flag, (CHARACTERGUID)_Character, _)
@@ -79,7 +41,7 @@ DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
 AND
 HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
 THEN
-LLSPRINT_SetSpeed(_Character, _SpeedVal);
+LLSPRINT_SetSpeed(_Character, _SpeedVal, 1);
 
 IF
 ObjectFlagSet(_Flag, (CHARACTERGUID)_Character, _Instance)
@@ -121,7 +83,7 @@ AND
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_Default", _DefaultDialogVar, _DefaultSpeedVal)
 THEN
 DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _DefaultSpeedVal);
-LLSPRINT_SetSpeed(_Character, _DefaultSpeedVal);
+LLSPRINT_SetSpeed(_Character, _DefaultSpeedVal, 1);
 
 QRY
 ToggleSprint_QRY_HasSpeedFlag((CHARACTERGUID)_Character)
@@ -135,7 +97,16 @@ DB_NOOP(1);
 PROC
 LLSPRINT_SetSpeed((CHARACTERGUID)_Character, (REAL)_SpeedVal)
 THEN
+LLSPRINT_SetSpeed(_Character, _SpeedVal, 0);
+
+PROC
+LLSPRINT_SetSpeed((CHARACTERGUID)_Character, (REAL)_SpeedVal, (INTEGER)_UpdateSpeed)
+THEN
 SetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SpeedVal);
+
+PROC
+LLSPRINT_SetSpeed((CHARACTERGUID)_Character, (REAL)_SpeedVal, 1)
+THEN
 SetStoryEvent(_Character, "ToggleSprint_Commands_UpdateSpeed");
 //END_REGION
 
@@ -149,6 +120,7 @@ DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_02", _DialogVar, _SpeedVal)
 THEN
 DB_LLSPRINT_PartySpeed("ToggleSprint_Speed_02");
 PartySetFlag(_Character, "ToggleSprint_Speed_02");
+LLSPRINT_SetSpeed(_Character, _SpeedVal);
 
 IF
 CharacterJoinedParty(_Character)
@@ -184,6 +156,18 @@ AND
 HasActiveStatus(_Player, "LLSPRINT_TOGGLESPRINT", 1)
 THEN
 DB_NOOP(1);
+
+PROC
+LLSPRINT_StorePartySpeed((STRING)_Flag)
+AND
+DB_LLSPRINT_PartySpeed(_OtherFlag)
+THEN
+NOT DB_LLSPRINT_PartySpeed(_OtherFlag);
+
+PROC
+LLSPRINT_StorePartySpeed((STRING)_Flag)
+THEN
+DB_LLSPRINT_PartySpeed(_Flag);
 //END_REGION
 
 //REGION RESURRECTED
@@ -214,18 +198,6 @@ AND
 DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SprintSpeed)
 THEN
 LLSPRINT_StorePartySpeed(_Flag);
-
-PROC
-LLSPRINT_StorePartySpeed((STRING)_Flag)
-AND
-DB_LLSPRINT_PartySpeed(_OtherFlag)
-THEN
-NOT DB_LLSPRINT_PartySpeed(_OtherFlag);
-
-PROC
-LLSPRINT_StorePartySpeed((STRING)_Flag)
-THEN
-DB_LLSPRINT_PartySpeed(_Flag);
 
 IF
 ObjectFlagSet("LLSPRINT_PartySpeedSet", (CHARACTERGUID)_Character, _Instance)
@@ -267,6 +239,44 @@ AND
 _SprintSpeed > 0
 THEN
 DB_NOOP(1);
+//END_REGION
+
+//REGION TOGGLE_SKILL
+IF
+CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _)
+THEN
+LLSPRINT_ToggleSprinting(_Character);
+
+PROC
+LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
+AND
+CharacterIsInCombat(_Character, 0)
+AND
+NOT DB_LLSPRINT_SprintStatusToggled(_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
+THEN
+ApplyStatus(_Character, "LLSPRINT_TOGGLESPRINT", -1.0, 1);
+DB_LLSPRINT_SprintStatusToggled(_Character);
+
+PROC
+LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
+AND
+CharacterIsInCombat(_Character, 0)
+AND
+NOT DB_LLSPRINT_SprintStatusToggled(_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+RemoveStatus(_Character, "LLSPRINT_TOGGLESPRINT");
+DB_LLSPRINT_SprintStatusToggled(_Character);
+
+PROC
+LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character)
+AND
+DB_LLSPRINT_SprintStatusToggled(_Character)
+THEN
+NOT DB_LLSPRINT_SprintStatusToggled(_Character);
 //END_REGION
 
 //REGION VERSIONING
