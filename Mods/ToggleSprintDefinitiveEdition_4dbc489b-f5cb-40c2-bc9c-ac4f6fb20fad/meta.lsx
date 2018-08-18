@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <save>
-    <header version="2" time="1533419381" />
-    <version major="3" minor="1" revision="8" build="0" />
+    <header version="2" time="1534588563" />
+    <version major="3" minor="6" revision="0" build="3" />
     <region id="Config">
         <node id="root">
             <children>
-                <node id="Dependencies">
-                    <children>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="LeaderLib_543d653f-446c-43d8-8916-54670ce24dd9" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="LeaderLib" type="22" />
-                            <attribute id="UUID" value="543d653f-446c-43d8-8916-54670ce24dd9" type="22" />
-                            <attribute id="Version" value="151191552" type="4" />
-                        </node>
-                    </children>
-                </node>
+                <node id="Dependencies" />
                 <node id="ModuleInfo">
-                    <attribute id="Author" value="" type="30" />
+                    <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="" type="30" />
+                    <attribute id="Description" value="Toggle Sprint increases the default running speed in a way that&apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more." type="30" />
                     <attribute id="Folder" value="ToggleSprintDefinitiveEdition_4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />
                     <attribute id="MD5" value="" type="23" />
                     <attribute id="MenuLevelName" value="" type="22" />
-                    <attribute id="Name" value="ToggleSprintDefinitiveEdition" type="22" />
+                    <attribute id="Name" value="Toggle Sprint - Definitive Edition" type="22" />
                     <attribute id="NumPlayers" value="2" type="1" />
                     <attribute id="PhotoBooth" value="" type="22" />
                     <attribute id="StartupLevelName" value="" type="22" />
                     <attribute id="Tags" value="" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
-                    <attribute id="UUID" value="4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad" type="22" />
+                    <attribute id="UUID" value="3cdec0ff-5d98-e859-87cd-c663b7b9fcfe" type="22" />
                     <attribute id="Version" value="268435456" type="4" />
                     <children>
+                        <node id="PublishVersion">
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
                         <node id="Scripts">
                             <children>
                                 <node id="Script">

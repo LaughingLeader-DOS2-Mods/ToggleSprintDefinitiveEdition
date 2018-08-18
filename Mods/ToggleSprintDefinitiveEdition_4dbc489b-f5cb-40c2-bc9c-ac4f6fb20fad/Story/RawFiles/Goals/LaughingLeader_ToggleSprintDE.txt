@@ -17,7 +17,7 @@ LLSPRINT_Internal_Start();
 PROC
 LLSPRINT_Internal_CompleteIfStarted()
 AND
-DB_StoryStarted(_)
+DB_StoryStarted((INTEGER)_)
 THEN
 DebugBreak("[LLSPRINT] Existing save detected. Starting LLSPRINT.");
 LLSPRINT_Internal_Start();

@@ -140,7 +140,7 @@ ObjectFlagSet(_Flag, (CHARACTERGUID)_Character, _)
 AND
 DB_ToggleSprint_SpeedFlags(_Flag, _DialogVar, _SpeedVal)
 AND
-DB_DialogPlayers(_Instance, _Character, _)
+DB_DialogPlayers(_Instance, _Character, (INTEGER)_)
 AND
 DB_DialogName("ToggleSprint_SettingsMenu", _Instance)
 THEN
@@ -410,7 +410,7 @@ ObjectClearFlag(_Object, _Flag);
 
 //REGION TOGGLE_SKILL
 IF
-CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _)
+CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _, _)
 THEN
 LLSPRINT_ToggleSprinting(_Character);
 
