@@ -2,6 +2,23 @@ INIT
 	
 EVENTS
 
+EVENT LLSPRINT_PrintReal
+VARS
+	CHARACTER:_Character
+	FLOAT:_RealVar
+	STRING:_Str
+	FIXEDSTRING:_FStr
+ON
+	OnCharacterEvent(_Character, "LLSPRINT_Events_Debug_PrintReal")
+ACTIONS
+IF "c1"
+	GetVar(_RealVar, _Character, "LLSPRINT_Debug_RealVar")
+THEN
+	Print(_Str, "Hitpoints Percentage: [1]", _RealVar)
+	Cast(_FStr, _Str)
+	DisplayCombatInfoText(_Character, _FStr, 10.0)
+ENDIF
+
 EVENT LLSPRINT_SprintInfoStatus
 VARS
 	CHARACTER:_Character

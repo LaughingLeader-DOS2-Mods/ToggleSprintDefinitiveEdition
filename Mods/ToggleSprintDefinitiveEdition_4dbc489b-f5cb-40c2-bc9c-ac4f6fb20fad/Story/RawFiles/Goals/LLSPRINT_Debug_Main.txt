@@ -18,6 +18,14 @@ IF
 StoryEvent((CHARACTERGUID)_Character, "LLSPRINT_Commands_StartSprinting")
 THEN
 CharacterUseSkill(_Character, "Shout_LLSPRINT_StartSprinting", _Character, 1, 1, 1);
+
+IF
+CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _, _)
+AND
+CharacterGetHitpointsPercentage(_Character, _Perc)
+THEN
+SetVarFloat(_Character, "LLSPRINT_Debug_RealVar", _Perc);
+SetStoryEvent(_Character, "LLSPRINT_Events_Debug_PrintReal");
 EXITSECTION
 
 ENDEXITSECTION

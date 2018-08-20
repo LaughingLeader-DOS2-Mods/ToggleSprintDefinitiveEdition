@@ -11,6 +11,8 @@ KBSECTION
 //REGION SETTINGS
 PROC
 LLSPRINT_InitSettings()
+AND
+NOT DB_ToggleSprint_SpeedFlags(_, _, _)
 THEN
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_00", "LLSPRINT_Speed00_c9ddbb10-7213-48e2-904a-2b7ec049beef", 4.0);
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_01", "LLSPRINT_Speed01_466add38-bab6-446c-90f0-9f067886a734", 4.5);
@@ -27,6 +29,11 @@ DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_11", "LLSPRINT_Speed11_ca8453d5-8
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_12", "LLSPRINT_Speed12_1c2839f9-3e48-48e7-8b60-b159ce2e64b7", 10.0);
 DB_ToggleSprint_SpeedFlags("ToggleSprint_Speed_13", "LLSPRINT_Speed13_c9a462e0-07cc-4d2f-bb15-b1119739ab21", 11.0);
 
+PROC
+LLSPRINT_InitSettings()
+AND
+NOT DB_ToggleSprint_DefaultSpeed(_)
+THEN
 DB_ToggleSprint_DefaultSpeed("ToggleSprint_Speed_03");
 
 PROC
@@ -38,23 +45,79 @@ LLSPRINT_InitSettings();
 //END_REGION
 
 //REGION INITIALIZE_SPRINTING
+//Host changed
 IF
-DB_IsPlayer(_Host)
+SavegameLoaded(_,_,_,_)
+AND
+LLSPRINT_QRY_HostChanged()
+AND
+DB_LLSPRINT_LastHost(_Host, _UserProfileID)
+THEN
+NOT DB_LLSPRINT_LastHost(_Host, _UserProfileID);
+
+QRY
+LLSPRINT_QRY_HostChanged()
+AND
+DB_LLSPRINT_LastHost(_Host, _UserProfileID)
+AND
+ObjectExists(_Host, 0)
+THEN
+DB_NOOP(1);
+
+QRY
+LLSPRINT_QRY_HostChanged()
+AND
+DB_LLSPRINT_LastHost(_Host, _UserProfileID)
+AND
+ObjectExists(_Host, 1)
+AND
+CharacterGetReservedUserID(_Host, _UserID)
+AND
+NOT GetUserProfileID(_UserID, _UserProfileID)
+THEN
+DB_NOOP(1);
+
+IF
+GameStarted(_,_)
+AND
+NOT DB_LLSPRINT_LastHost(_,_)
+THEN
+TimerLaunch("LLSPRINT_Timers_SetHost", 200);
+
+IF
+TimerFinished("LLSPRINT_Timers_SetHost")
+THEN
+IterateUsers("LLSPRINT_Events_IterateUsers_FindHost");
+
+IF
+UserEvent(_UserID, "LLSPRINT_Events_IterateUsers_FindHost")
 AND
 CharacterGetHostCharacter(_Host)
 AND
+CharacterGetReservedUserID(_Host, _UserID)
+AND
+GetUserProfileID(_UserID, _UserProfileID)
+AND
 UserGetFlag(_Host, "LLSPRINT_IsHost", 0)
 THEN
+LLSPRINT_System_ClearHostFlag(_Host);
 UserSetFlag(_Host, "LLSPRINT_IsHost");
+DB_LLSPRINT_LastHost(_Host, _UserProfileID);
 
-IF
-DB_IsPlayer(_Host)
+PROC
+LLSPRINT_System_ClearHostFlag((CHARACTERGUID)_Host)
 AND
-NOT CharacterGetHostCharacter(_Host)
+DB_IsPlayer(_Player)
 AND
-UserGetFlag(_Host, "LLSPRINT_IsHost", 1)
+_Player != _Host
+AND
+UserGetFlag(_Player, "LLSPRINT_IsHost", 1)
+AND
+CharacterGetReservedUserID(_Host, _HostID)
+AND
+NOT CharacterGetReservedUserID(_Player, _HostID)
 THEN
-UserClearFlag(_Host, "LLSPRINT_IsHost", 0);
+UserClearFlag(_Player, "LLSPRINT_IsHost", 0);
 
 IF
 GameStarted(_Level, _)
@@ -542,7 +605,7 @@ IF
 DB_ToggleSprint_RegisteredLeaderLibSettings(1)
 THEN
 DB_LeaderLib_ModApi_RegisterActiveGoal("ToggleSprint_DefinitiveEdition", "LaughingLeader", "LLSPRINT_Main");
-DB_LeaderLib_ModApi_RegisterMenu("LaughingLeader_ToggleSprint_DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprint_DefinitiveEdition", "LaughingLeader");
+DB_LeaderLib_ModApi_RegisterMenu("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprint_DefinitiveEdition", "LaughingLeader");
 DB_LLLIB_Treasure_TreasureItemTemplates("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1, "");
 DB_LLLIB_Treasure_ItemMaxAmount("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1);
 //END_REGION
