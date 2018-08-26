@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <save>
-    <header version="2" time="1533748737" />
-    <version major="3" minor="1" revision="8" build="0" />
+    <header version="2" time="1535046771" />
+    <version major="3" minor="6" revision="0" build="3" />
     <region id="DialogVariables">
         <node id="root">
             <children>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="Party Sprinting Speed" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="51342cd2-87c7-49a0-8ab5-94e19e5b2155" type="31" />
+                    <attribute id="name" value="LLSPRINT_CurrentMenu" type="22" />
+                    <attribute id="type" value="String" type="23" />
+                </node>
                 <node id="DialogVariable">
                     <attribute id="DefaultValue" value="-1.0" type="23" />
                     <attribute id="Description" value="" type="23" />
                     <attribute id="UUID" value="ababef8c-c917-4fc2-8140-4d154cf6b49c" type="31" />
                     <attribute id="name" value="LLSPRINT_CurrentSpeed" type="22" />
                     <attribute id="type" value="Float" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="3.75" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="e21bd799-d097-434e-9967-68ad9d9ff09e" type="31" />
+                    <attribute id="name" value="LLSPRINT_DOS2_DefaultSpeed" type="22" />
+                    <attribute id="type" value="String" type="23" />
                 </node>
                 <node id="DialogVariable">
                     <attribute id="DefaultValue" value="-1.0" type="23" />

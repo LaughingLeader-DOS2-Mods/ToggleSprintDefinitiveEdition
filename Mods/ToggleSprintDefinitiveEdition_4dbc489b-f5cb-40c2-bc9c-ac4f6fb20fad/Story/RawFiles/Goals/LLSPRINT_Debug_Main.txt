@@ -14,11 +14,7 @@ TimerFinished("LLSPRINT_Timers_Debug_SetupParty")
 THEN
 GlobalSetFlag("LLSPRINT_Debug_LevelReady");
 
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLSPRINT_Commands_StartSprinting")
-THEN
-CharacterUseSkill(_Character, "Shout_LLSPRINT_StartSprinting", _Character, 1, 1, 1);
-
+/*
 IF
 CharacterUsedSkill(_Character, "Shout_LLSPRINT_ToggleSprint", _, _)
 AND
@@ -26,6 +22,51 @@ CharacterGetHitpointsPercentage(_Character, _Perc)
 THEN
 SetVarFloat(_Character, "LLSPRINT_Debug_RealVar", _Perc);
 SetStoryEvent(_Character, "LLSPRINT_Events_Debug_PrintReal");
+*/
+
+IF
+ObjectFlagSet("ToggleSprint_Debug_IsCompanion", (CHARACTERGUID)_Companion, _Instance)
+AND
+DialogGetInvolvedPlayer(_Instance, 1, (CHARACTERGUID)_Recruiter)
+THEN
+CharacterMakePlayer(_Companion, _Recruiter);
+DB_IsPlayer(_Companion);
+
+IF
+ObjectFlagCleared("ToggleSprint_Debug_IsCompanion", (CHARACTERGUID)_Companion, _Instance)
+THEN
+CharacterMakeNPC(_Companion);
+NOT DB_IsPlayer(_Companion);
+
+IF
+TextEventSet("ts_ewalkoverride")
+AND
+DB_IsPlayer(_Character)
+AND
+CharacterIsControlled(_Character, 1)
+AND
+DB_ToggleSprint_EnemyWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+SetVarFloat(_Character, "ToggleSprint_WalkSpeed", _SpeedVal);
+ObjectSetFlag(_Character, "ToggleSprint_WalkSpeedOverrideEnabled");
+DebugBreak("[ToggleSprint:EnemySprinting:EnableSpeedOverride] Updated NPC walking speed.");
+
+IF
+TextEventSet("ts_esprintoverride")
+AND
+DB_IsPlayer(_Character)
+AND
+CharacterIsControlled(_Character, 1)
+AND
+DB_ToggleSprint_EnemySprintingSpeed(_Flag)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+SetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SpeedVal);
+ObjectSetFlag(_Character, "ToggleSprint_EnemySprintEnabled");
+DebugBreak("[ToggleSprint:EnemySprinting:EnableSpeedOverride] Updated NPC sprinting speed.");
 EXITSECTION
 
 ENDEXITSECTION

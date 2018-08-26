@@ -1,0 +1,140 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+//DB_ToggleSprint_EnemySprintingSpeed(_Flag)
+//DB_ToggleSprint_EnemyWalkingSpeed(_Flag)
+KBSECTION
+//REGION QUERIES
+QRY
+LLSPRINT_EnemySprinting_QRY_EnemySpeedOverrideEnabled()
+AND
+GlobalGetFlag("ToggleSprint_EnemySprintingEnabled", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLSPRINT_EnemySprinting_QRY_EnemySpeedOverrideEnabled()
+AND
+GlobalGetFlag("ToggleSprint_EnemyWalkingOverrideEnabled", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLSPRINT_EnemySprinting_QRY_EnemySpeedNotSet((CHARACTERGUID)_Enemy)
+AND
+GlobalGetFlag("ToggleSprint_EnemySprintingEnabled", 1)
+AND
+ObjectGetFlag(_Enemy, "ToggleSprint_EnemySprintEnabled", 0)
+THEN
+DB_NOOP(1);
+
+QRY
+LLSPRINT_EnemySprinting_QRY_EnemySpeedNotSet((CHARACTERGUID)_Enemy)
+AND
+GlobalGetFlag("ToggleSprint_EnemyWalkingOverrideEnabled", 1)
+AND
+ObjectGetFlag(_Enemy, "ToggleSprint_WalkSpeedOverrideEnabled", 0)
+THEN
+DB_NOOP(1);
+
+QRY
+LLSPRINT_EnemySprinting_QRY_EnemyBlacklisted((CHARACTERGUID)_Enemy, "Sprinting")
+AND
+GetTemplate(_Enemy, _Template)
+AND
+StringContains(_Template, "_Zombie", 1)
+THEN
+DB_NOOP(1);
+//END_REGION
+
+//REGION SPEED_UPDATE_EVENTS
+IF
+GlobalFlagSet("ToggleSprint_EnemySprintingEnabled")
+THEN
+LLSPRINT_EnemySprinting_UpdateEnemySpeed();
+
+IF
+GlobalFlagSet("ToggleSprint_WalkSpeedOverrideEnabled")
+THEN
+LLSPRINT_EnemySprinting_UpdateEnemySpeed();
+
+IF
+DB_ToggleSprint_EnemySprintingSpeed(_Flag)
+AND
+LLSPRINT_EnemySprinting_QRY_EnemySpeedOverrideEnabled()
+THEN
+LLSPRINT_EnemySprinting_UpdateEnemySpeed();
+
+IF
+DB_CombatObjects(_NPC, _CombatID)
+AND
+CharacterIsPlayer((CHARACTERGUID)_NPC, 0)
+AND
+LLSPRINT_EnemySprinting_QRY_EnemySpeedOverrideEnabled()
+THEN
+LLSPRINT_EnemySprinting_EnableSpeedOverride(_NPC);
+
+/*
+IF
+CharacterResurrected(_NPC)
+AND
+CharacterIsPlayer((CHARACTERGUID)_NPC, 0)
+AND
+LLSPRINT_EnemySprinting_QRY_EnemySpeedOverrideEnabled()
+AND
+DB_CombatCharacters(_NPC, _Combat)
+THEN
+LLSPRINT_EnemySprinting_EnableSpeedOverride(_NPC);
+*/
+
+PROC
+LLSPRINT_EnemySprinting_UpdateEnemySpeed()
+AND
+DB_CombatCharacters(_NPC, _Combat)
+AND
+CharacterIsPlayer(_NPC, 0)
+AND
+CharacterIsDead(_NPC, 0)
+THEN
+LLSPRINT_EnemySprinting_EnableSpeedOverride(_NPC);
+//END_REGION
+
+//REGION SPEED_SET_PROCS
+PROC
+LLSPRINT_EnemySprinting_EnableSpeedOverride((CHARACTERGUID)_Enemy)
+AND
+NOT LLSPRINT_EnemySprinting_QRY_EnemyBlacklisted(_Enemy, "Sprinting")
+AND
+GlobalGetFlag("ToggleSprint_EnemySprintingEnabled", 1)
+AND
+ObjectGetFlag(_Enemy, "ToggleSprint_EnemySprintEnabled", 0)
+AND
+DB_ToggleSprint_EnemySprintingSpeed(_Flag)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+SetVarFloat(_Enemy, "ToggleSprint_SprintSpeed", _SpeedVal);
+ObjectSetFlag(_Enemy, "ToggleSprint_EnemySprintEnabled");
+DebugBreak("[ToggleSprint:EnemySprinting:EnableSpeedOverride] Updated NPC sprinting speed.");
+
+PROC
+LLSPRINT_EnemySprinting_EnableSpeedOverride((CHARACTERGUID)_Enemy)
+AND
+NOT LLSPRINT_EnemySprinting_QRY_EnemyBlacklisted(_Enemy, "Walking")
+AND
+GlobalGetFlag("ToggleSprint_EnemyWalkingOverrideEnabled", 1)
+AND
+ObjectGetFlag(_Enemy, "ToggleSprint_WalkSpeedOverrideEnabled", 0)
+AND
+DB_ToggleSprint_EnemyWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+SetVarFloat(_Enemy, "ToggleSprint_WalkSpeed", _SpeedVal);
+ObjectSetFlag(_Enemy, "ToggleSprint_WalkSpeedOverrideEnabled");
+DebugBreak("[ToggleSprint:EnemySprinting:EnableSpeedOverride] Updated NPC walking speed.");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_ToggleSprintDE"

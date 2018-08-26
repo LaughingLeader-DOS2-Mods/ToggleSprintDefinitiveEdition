@@ -6,7 +6,7 @@ KBSECTION
 PROC
 LLSPRINT_Internal_Start()
 THEN
-DebugBreak("[LLSPRINT] Toggle Sprint Definition Edition starting.");
+DebugBreak("[LLSPRINT] Starting Toggle Sprint - Definition Edition.");
 GoalCompleted;
 
 IF
@@ -19,7 +19,7 @@ LLSPRINT_Internal_CompleteIfStarted()
 AND
 DB_StoryStarted((INTEGER)_)
 THEN
-DebugBreak("[LLSPRINT] Existing save detected. Starting LLSPRINT.");
+DebugBreak("[LLSPRINT:CompleteIfStarted] Toggle Sprint was added to an existing save. Started from the INIT section.");
 LLSPRINT_Internal_Start();
 
 IF
@@ -27,7 +27,7 @@ SavegameLoaded(_,_,_,_)
 AND
 DB_StoryStarted(_)
 THEN
-DebugBreak("[LLSPRINT] Existing save detected. Starting LLSPRINT.");
+DebugBreak("[LLSPRINT:SavegameLoaded] Toggle Sprint was added to an existing save.");
 LLSPRINT_Internal_Start();
 EXITSECTION
 
