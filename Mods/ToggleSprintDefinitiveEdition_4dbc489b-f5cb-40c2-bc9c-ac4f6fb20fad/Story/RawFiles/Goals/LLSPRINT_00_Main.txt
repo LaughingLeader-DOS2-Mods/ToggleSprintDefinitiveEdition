@@ -594,11 +594,11 @@ DB_ToggleSprint_RegisteredLeaderLibSettings(1);
 IF
 DB_ToggleSprint_RegisteredLeaderLibSettings(1)
 THEN
-DB_LeaderLib_ModApi_RegisterActiveGoal("ToggleSprint_DefinitiveEdition", "LaughingLeader", "LLSPRINT_Main");
+DB_LeaderLib_ModApi_RegisterActiveGoal("ToggleSprint_DefinitiveEdition", "LaughingLeader", "LLSPRINT_00_Main");
 DB_LeaderLib_ModApi_RegisterMenu("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprint_DefinitiveEdition", "LaughingLeader");
-DB_LLLIB_Treasure_TreasureItemTemplates("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1, "");
-DB_LLLIB_Treasure_ItemMaxAmount("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1);
 DB_LeaderLib_ModMenu_RegisteredMenu_OpenEvent("LaughingLeader.ToggleSprint.DefinitiveEdition", "ToggleSprint_SettingsMenu_OpenRequest");
+DB_LeaderLib_Treasure_TreasureItemTemplates("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1, "");
+DB_LeaderLib_Treasure_ItemMaxAmount("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1);
 
 IF
 StoryEvent(_, "LeaderLib_Initialized")
