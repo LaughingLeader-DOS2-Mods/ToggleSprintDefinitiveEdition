@@ -12,7 +12,7 @@ Toggle Sprint is a quality-of-life mod that features increased, fully-customizab
 	* Sprinting speeds can be set for the whole party (by the host), with the option for individual characters to set their own speed.
 	* Enemy sprinting and walking speeds can be set.
 	* The sprinting status can be made hidden, giving you some UI space if you tend to have too many statuses going on.
-* [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/releases/tag/Mod-Release) mod menu support.
+* [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/releases/tag/mod-releases) mod menu support.
 
 ## Note:
 Toggle Sprint DE speeds up characters in a way that doesn't affect movement cost in battle, so speeding up enemies has no tactical disadvantage, as it purely affects the time it takes to get from A to B.
