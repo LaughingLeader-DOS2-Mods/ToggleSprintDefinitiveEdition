@@ -6,7 +6,7 @@ Toggle Sprint is a quality-of-life mod that features increased, fully-customizab
 # Features:
 * A fully reworded sprinting system. Choose your own speed!
 * Sprinting no longer affects combat movement costs, and is thus enabled in combat.
-* NPCs running and walking speeds for combat can be configured, greatly speeding up battles.
+* NPC running and walking speeds for combat can be configured, greatly speeding up battles.
 * Choose from a set of preset configurations when opening the settings menu for the first time. No need to get lost in menus and options.
 * A variety of options available in the settings menu.
 	* Sprinting speeds can be set for the whole party (by the host), with the option for individual characters to set their own speed.
