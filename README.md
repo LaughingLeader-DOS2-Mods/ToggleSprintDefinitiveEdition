@@ -4,7 +4,7 @@ Toggle Sprint Definitive Edition for Divinity: Original Sin 2 Definitive Edition
 Toggle Sprint is a quality-of-life mod that features increased, fully-customizable running speeds for both the party and NPCs in combat.
 
 # Features:
-* A fully reworded sprinting system. Choose your own speed!
+* A fully reworked sprinting system. Choose your own speed!
 * Sprinting no longer affects combat movement costs, and is thus enabled in combat.
 * NPC running and walking speeds for combat can be configured, greatly speeding up battles.
 * Choose from a set of preset configurations when opening the settings menu for the first time. No need to get lost in menus and options.
