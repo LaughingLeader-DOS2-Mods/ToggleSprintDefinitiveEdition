@@ -12,7 +12,7 @@ Editor/Mods/ToggleSprintDefinitiveEdition_4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad/L
 ######################
 *.div
 *.raw
-
+Mods/ToggleSprintDefinitiveEdition_4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad/Story/Dialogs/Autosave/*
 
 # Asset Folders      #
 ######################
@@ -107,4 +107,3 @@ personallog.txt
 ehthumbs.db
 Thumbs.db
 *.lnk
-Mods/ToggleSprintDefinitiveEdition_4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad/Story/Dialogs/Autosave/ToggleSprint_SettingsMenu-AutoSave-s3ju2ngv.lsj

@@ -138,11 +138,8 @@ DB_ToggleSprint_DefaultWalkingSpeed(_Flag)
 THEN
 DB_ToggleSprint_EnemyWalkingSpeed(_Flag);
 
-//Disabled for now
 PROC
-LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
-AND
-_Version == "-1"
+LLSPRINT_Internal_ResetStaticDatabases()
 THEN
 SysClear("DB_ToggleSprint_SpeedDialogVars", 2);
 SysClear("DB_ToggleSprint_SprintingSpeed", 3);
@@ -151,6 +148,14 @@ SysClear("DB_ToggleSprint_MenuFlags", 2);
 SysClear("DB_ToggleSprint_DefaultSprintingSpeed", 1);
 SysClear("DB_ToggleSprint_DefaultWalkingSpeed", 1);
 LLSPRINT_InitSettings();
+
+//Disabled for now
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
+AND
+_Version == "-1"
+THEN
+LLSPRINT_Internal_ResetStaticDatabases();
 //END_REGION
 
 //REGION SET_HOST
@@ -230,10 +235,21 @@ UserClearFlag(_Player, "LLSPRINT_IsHost", 0);
 //END_REGION
 
 //REGION INITIALIZE_SPRINTING
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
+AND
+NOT GlobalGetFlag("ToggleSprint_Initialized", 1)
+THEN
+DebugBreak("[LLSPRINT:VersionUpdated] [ERROR] Toggle Sprint was never initialized on an existing save. Re-initializing.");
+LLSPRINT_Internal_ResetStaticDatabases(); // Just in case
+GlobalSetFlag("ToggleSprint_Initialized");
+TimerCancel("ToggleSprint_Timers_Initialize");
+TimerLaunch("ToggleSprint_Timers_Initialize", 500);
+
 IF
 GameStarted(_Level, _)
 AND
-GlobalGetFlag("ToggleSprint_Initialized", 0)
+NOT GlobalGetFlag("ToggleSprint_Initialized", 1)
 AND
 IsCharacterCreationLevel(_Level, 0)
 THEN
@@ -388,6 +404,8 @@ IF
 CharacterJoinedParty(_Character)
 AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
+AND
+NOT ObjectGetFlag(_Character, "LLSPRINT_Debug_RemovedSprintSkill", 1)
 AND
 CharacterHasSkill(_Character, "Shout_LLSPRINT_ToggleSprint", 0)
 THEN
