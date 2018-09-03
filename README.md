@@ -14,13 +14,20 @@ Toggle Sprint is a quality-of-life mod that features increased, fully-customizab
 	* The sprinting status can be made hidden, giving you some UI space if you tend to have too many statuses going on.
 * [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/releases/tag/mod-releases) mod menu support.
 
-## Note:
-Toggle Sprint DE speeds up characters in a way that doesn't affect movement cost in battle, so speeding up enemies has no tactical disadvantage, as it purely affects the time it takes to get from A to B.
-	
+## Tips/Notes:  
+* You can access the Settings Menu via the Toggle Sprint Settings book (given to the host, and sold by the [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/) trader).The host should open the settings menu once to run through the setup dialog, which has options for configuration presets!
+
+* Additionally, you can access this menu via the LeaderLib Mod Menu, which is opened with the Mod Menu book, given/sold by the LeaderLib trader.
+
+* Toggle Sprint DE speeds up characters in a way that doesn't affect movement cost in battle, so speeding up enemies has no tactical disadvantage, as it purely affects the time it takes to get from A to B.
+
+# Changelog
+* [Check the changelog here to see a summary of each update.](https://github.com/LaughingLeader-DOS2-Mods/ToggleSprintDefinitiveEdition/blob/master/CHANGELOG.md)
+
 # Releases
 * [Github Release](https://github.com/LaughingLeader-DOS2-Mods/ToggleSprintDefinitiveEdition/releases/)
-* [Steam Workshop]() 
-* [Nexus]()
+* [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1499453694) 
+* [Nexus](https://www.nexusmods.com/divinityoriginalsin2definitiveedition/mods/11)
 
 # Support
 If you're feeling generous, an easy way to show support is by tipping me a coffee:
