@@ -369,8 +369,6 @@ CharacterRemoveSkill(_Character, "Shout_LLSPRINT_ToggleSprint");
 
 IF
 ObjectFlagSet("LLSPRINT_Commands_AddSettingsBook", (CHARACTERGUID)_Character, _Instance)
-AND
-ItemTemplateIsInUserInventory(_Character, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, 0)
 THEN
 ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Character, 1, 1);
 
