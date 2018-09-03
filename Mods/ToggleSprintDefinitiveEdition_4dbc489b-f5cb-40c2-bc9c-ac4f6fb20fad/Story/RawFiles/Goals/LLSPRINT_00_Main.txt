@@ -282,13 +282,23 @@ LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_S
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
+NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
+AND
+CharacterHasSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0)
+AND
+NOT ObjectGetFlag(_Player, "LLSPRINT_Debug_RemovedSprintSkill", 1) // In case it was removed manually by the player.
+THEN
+CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
+
+IF
+StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
+AND
 DB_ToggleSprint_PartySprintingSpeed(_Flag)
 AND
 DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
 THEN
 LLSPRINT_SetSpeed(_Player, _SpeedVal);
 LLSPRINT_ToggleSprinting(_Player, 1);
-CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
 //END_REGION
 
 //REGION QUERIES
