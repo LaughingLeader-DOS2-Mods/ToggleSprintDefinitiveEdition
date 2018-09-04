@@ -2,7 +2,7 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 LLSPRINT_InitSettings();
-DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.4");
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.7");
 
 /*Settings*/
 //DB_ToggleSprint_SpeedDialogVars(_SelectFlag, _DialogVar)
@@ -172,31 +172,28 @@ NOT DB_LLSPRINT_LastHost(_Host, _UserProfileID);
 QRY
 LLSPRINT_QRY_HostChanged()
 AND
-DB_LLSPRINT_LastHost(_Host, _UserProfileID)
+DB_LLSPRINT_LastHost(_OldHost, _LastUserProfileID)
 AND
-ObjectExists(_Host, 0)
-THEN
-DB_NOOP(1);
-
-QRY
-LLSPRINT_QRY_HostChanged()
+CharacterGetHostCharacter(_NewHost)
 AND
-DB_LLSPRINT_LastHost(_Host, _UserProfileID)
+_OldHost != _NewHost
 AND
-ObjectExists(_Host, 1)
+CharacterGetReservedUserID(_NewHost, _UserID)
 AND
-CharacterGetReservedUserID(_Host, _UserID)
+GetUserProfileID(_UserID, _NewUserProfileID)
 AND
-NOT GetUserProfileID(_UserID, _UserProfileID)
+_LastUserProfileID != _NewUserProfileID
 THEN
 DB_NOOP(1);
 
 IF
-GameStarted(_,_)
+GameStarted(_Level,_)
+AND
+IsCharacterCreationLevel(_Level, 0)
 AND
 NOT DB_LLSPRINT_LastHost(_,_)
 THEN
-TimerLaunch("LLSPRINT_Timers_SetHost", 200);
+TimerLaunch("LLSPRINT_Timers_SetHost", 500);
 
 IF
 TimerFinished("LLSPRINT_Timers_SetHost")
@@ -636,10 +633,10 @@ LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_S
 IF
 GameStarted(_,_)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.4")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.7")
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.0.0.4");
-LLSPRINT_Updater_SetVersion("1.0.0.4");
+LLSPRINT_Updater_RemoveOldVersions("1.0.0.7");
+LLSPRINT_Updater_SetVersion("1.0.0.7");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
