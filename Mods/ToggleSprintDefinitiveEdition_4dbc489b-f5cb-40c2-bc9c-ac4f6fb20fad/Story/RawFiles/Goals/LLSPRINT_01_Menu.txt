@@ -280,6 +280,41 @@ THEN
 ObjectClearFlag(_Character, _SelectFlag);
 //END_REGION
 
+//REGION HOST_FLAG
+PROC
+LLSPRINT_Menu_SetHostFlag()
+AND
+CharacterGetHostCharacter(_Host)
+AND
+DB_IsPlayer(_Player)
+AND
+_Player != _Host
+AND
+UserGetFlag(_Player, "LLSPRINT_IsHost", 1)
+AND
+NOT LLSPRINT_QRY_UserMatch(_Player, _Host)
+THEN
+UserClearFlag(_Player, "LLSPRINT_IsHost", 0);
+
+PROC
+LLSPRINT_Menu_SetHostFlag()
+AND
+CharacterGetHostCharacter(_Host)
+AND
+UserGetFlag(_Host, "LLSPRINT_IsHost", 0)
+THEN
+UserSetFlag(_Host, "LLSPRINT_IsHost", 0);
+
+QRY
+LLSPRINT_QRY_UserMatch((CHARACTERGUID)_Char, (CHARACTERGUID)_Char2)
+AND
+CharacterGetReservedUserID(_Char, _UserID)
+AND
+CharacterGetReservedUserID(_Char2, _UserID)
+THEN
+DB_NOOP(1);
+//END_REGION
+
 //REGION SETTINGS_MENU_OPENING
 PROC
 ProcBlockUseOfItem(_Character, _Item)
@@ -303,6 +338,7 @@ DB_NOOP(1);
 IF
 CharacterUsedItemTemplate(_Character, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Item)
 THEN
+LLSPRINT_Menu_SetHostFlag();
 LLSPRINT_Menu_OpenMenu(_Character);
 
 IF
@@ -328,6 +364,7 @@ Proc_StartDialog(0, "ToggleSprint_SettingsMenu", _Character, _Character);
 IF
 StoryEvent((CHARACTERGUID)_Character, "ToggleSprint_SettingsMenu_OpenRequest")
 THEN
+LLSPRINT_Menu_SetHostFlag();
 LLSPRINT_Menu_OpenMenu(_Character);
 
 PROC

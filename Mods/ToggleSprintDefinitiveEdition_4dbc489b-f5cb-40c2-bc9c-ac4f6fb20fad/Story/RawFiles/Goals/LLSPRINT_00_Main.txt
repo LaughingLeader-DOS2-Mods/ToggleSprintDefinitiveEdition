@@ -2,7 +2,7 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 LLSPRINT_InitSettings();
-DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.7");
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.8");
 
 /*Settings*/
 //DB_ToggleSprint_SpeedDialogVars(_SelectFlag, _DialogVar)
@@ -156,79 +156,6 @@ AND
 _Version == "-1"
 THEN
 LLSPRINT_Internal_ResetStaticDatabases();
-//END_REGION
-
-//REGION SET_HOST
-//Host changed
-IF
-SavegameLoaded(_,_,_,_)
-AND
-LLSPRINT_QRY_HostChanged()
-AND
-DB_LLSPRINT_LastHost(_Host, _UserProfileID)
-THEN
-NOT DB_LLSPRINT_LastHost(_Host, _UserProfileID);
-
-QRY
-LLSPRINT_QRY_HostChanged()
-AND
-DB_LLSPRINT_LastHost(_OldHost, _LastUserProfileID)
-AND
-CharacterGetHostCharacter(_NewHost)
-AND
-_OldHost != _NewHost
-AND
-CharacterGetReservedUserID(_NewHost, _UserID)
-AND
-GetUserProfileID(_UserID, _NewUserProfileID)
-AND
-_LastUserProfileID != _NewUserProfileID
-THEN
-DB_NOOP(1);
-
-IF
-GameStarted(_Level,_)
-AND
-IsCharacterCreationLevel(_Level, 0)
-AND
-NOT DB_LLSPRINT_LastHost(_,_)
-THEN
-TimerLaunch("LLSPRINT_Timers_SetHost", 500);
-
-IF
-TimerFinished("LLSPRINT_Timers_SetHost")
-THEN
-IterateUsers("LLSPRINT_Events_IterateUsers_FindHost");
-
-IF
-UserEvent(_UserID, "LLSPRINT_Events_IterateUsers_FindHost")
-AND
-CharacterGetHostCharacter(_Host)
-AND
-CharacterGetReservedUserID(_Host, _UserID)
-AND
-GetUserProfileID(_UserID, _UserProfileID)
-AND
-UserGetFlag(_Host, "LLSPRINT_IsHost", 0)
-THEN
-LLSPRINT_System_ClearHostFlag(_Host);
-UserSetFlag(_Host, "LLSPRINT_IsHost");
-DB_LLSPRINT_LastHost(_Host, _UserProfileID);
-
-PROC
-LLSPRINT_System_ClearHostFlag((CHARACTERGUID)_Host)
-AND
-DB_IsPlayer(_Player)
-AND
-_Player != _Host
-AND
-UserGetFlag(_Player, "LLSPRINT_IsHost", 1)
-AND
-CharacterGetReservedUserID(_Host, _HostID)
-AND
-NOT CharacterGetReservedUserID(_Player, _HostID)
-THEN
-UserClearFlag(_Player, "LLSPRINT_IsHost", 0);
 //END_REGION
 
 //REGION INITIALIZE_SPRINTING
@@ -633,10 +560,10 @@ LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_S
 IF
 GameStarted(_,_)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.7")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.8")
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.0.0.7");
-LLSPRINT_Updater_SetVersion("1.0.0.7");
+LLSPRINT_Updater_RemoveOldVersions("1.0.0.8");
+LLSPRINT_Updater_SetVersion("1.0.0.8");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
