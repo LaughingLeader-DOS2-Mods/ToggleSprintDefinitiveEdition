@@ -2,7 +2,7 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 LLSPRINT_InitSettings();
-DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.9");
+LLSPRINT_Internal_RegisterMod();
 
 /*Settings*/
 //DB_ToggleSprint_SpeedDialogVars(_SelectFlag, _DialogVar)
@@ -279,6 +279,15 @@ AND
 ObjectGetFlag(_Player, "ToggleSprint_SprintingEnabled", 1)
 THEN
 DB_NOOP(1);
+
+QRY
+LLSPRINT_QRY_IgnoreCharacter((CHARACTERGUID)_Character)
+AND
+CharacterIsSummon(_Character, 1)
+AND
+NOT UserGetFlag(_Character, "ToggleSprint_AddSkillToSummons", 1)
+THEN
+DB_NOOP(1);
 //END_REGION
 
 //REGION SPEED_PROCS
@@ -357,15 +366,6 @@ AND
 CharacterIsControlled(_Character, 1)
 THEN
 ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Character, 1, 0);
-
-QRY
-LLSPRINT_QRY_IgnoreCharacter((CHARACTERGUID)_Character)
-AND
-CharacterIsSummon(_Character, 1)
-AND
-NOT GlobalGetFlag("ToggleSprint_AddSkillToSummons", 1)
-THEN
-DB_NOOP(1);
 
 IF
 CharacterLeftParty(_Character)
@@ -485,12 +485,20 @@ NOT DB_LLSPRINT_SprintStatusToggled(_Character);
 IF
 CharacterStatusApplied(_Character, "LLSPRINT_TOGGLESPRINT", _)
 AND
+NOT UserGetFlag(_Character, "ToggleSprint_DisableSprintingStatusText", 1)
+AND
+NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
+AND
 GlobalGetFlag("ToggleSprint_SprintingStatusHidden", 1)
 THEN
 CharacterStatusText(_Character, "LLSPRINT_StatusText_SprintingEnabled");
 
 IF
 ObjectFlagCleared("ToggleSprint_SprintingEnabled", (CHARACTERGUID)_Character, _)
+AND
+NOT UserGetFlag(_Character, "ToggleSprint_DisableSprintingStatusText", 1)
+AND
+NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
 AND
 GlobalGetFlag("ToggleSprint_SprintingStatusHidden", 1)
 THEN
@@ -522,10 +530,15 @@ GameStarted(_Level, _)
 AND
 IsGameLevel(_Level, 1)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.0.1.0")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.0.2.0")
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.0.1.0");
-LLSPRINT_Updater_SetVersion("1.0.1.0");
+LLSPRINT_Internal_RegisterMod();
+
+PROC
+LLSPRINT_Internal_RegisterMod()
+THEN
+LLSPRINT_Updater_RemoveOldVersions("1.0.2.0");
+LLSPRINT_Updater_SetVersion("1.0.2.0");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
@@ -625,6 +638,24 @@ AND
 _Count < 1
 THEN
 ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Player, 1, 0);
+//END_REGION
+
+//REGION UPDATES
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, "1.0.2.0")
+AND
+GlobalGetFlag("ToggleSprint_AddSkillToSummons", 1)
+AND
+DB_IsPlayer(_Player)
+THEN
+UserSetFlag(_Player, "ToggleSprint_AddSkillToSummons", 0);
+
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, "1.0.2.0")
+AND
+GlobalGetFlag("ToggleSprint_AddSkillToSummons", 1)
+THEN
+GlobalClearFlag("ToggleSprint_AddSkillToSummons");
 //END_REGION
 
 //REGION DEBUG

@@ -1,5 +1,13 @@
 Toggle Sprint Definitive Edition Changelog
 =======
+# 1.0.2.0
+* Settings Menu
+	* New User Settings submenu.
+		* Sprinting status text can now be disabled for all user-owned characters.
+		* The Enable/Disable "Automatically Adding the Sprinting Skill to Summons" option has been moved to this menu, as a user settings.
+			* Summon sprinting status text is automatically disabled if "Disable Automatically Adding Sprinting Skill to Summons" is set.
+		
+
 # 1.0.1.0
 * Fix for the sprinting skill / book not being added when starting from the multiplayer lobby.
 
