@@ -2,7 +2,7 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 LLSPRINT_InitSettings();
-DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.8");
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", "1.0.0.9");
 
 /*Settings*/
 //DB_ToggleSprint_SpeedDialogVars(_SelectFlag, _DialogVar)
@@ -324,14 +324,18 @@ ObjectSetFlag(_Character, _Flag);
 IF
 CharacterJoinedParty(_Character)
 AND
-LLSPRINT_QRY_UserIsSprinting(_Character)
-AND
 DB_ToggleSprint_PartySprintingSpeed(_Flag)
 AND
 DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
 THEN
-SetVarFloat(_Character, "ToggleSprint_SprintSpeed", _SpeedVal);
+LLSPRINT_SetSpeed(_Character, _SpeedVal);
 SetVarString(_Character, "ToggleSprint_CurrentSpeedFlag", _Flag);
+
+IF
+CharacterJoinedParty(_Character)
+AND
+LLSPRINT_QRY_UserIsSprinting(_Character)
+THEN
 LLSPRINT_ToggleSprinting(_Character, 1);
 
 IF
@@ -525,53 +529,14 @@ ObjectClearFlag(_Character, "ToggleSprint_WasSprinting");
 LLSPRINT_ToggleSprinting(_Character, 1);
 //END_REGION
 
-//REGION SAFETY_CHECKS
-PROC
-LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
-THEN
-GlobalSetFlag("LLSPRINT_RunCheckOnNextGameStarted");
-
-IF
-GameStarted(_Level, _)
-AND
-IsGameLevel(_Level, 1)
-AND
-GlobalGetFlag("LLSPRINT_RunCheckOnNextGameStarted", 1)
-THEN
-GlobalClearFlag("LLSPRINT_RunCheckOnNextGameStarted");
-IterateParties("ToggleSprintDE_Iterator_CheckPlayers");
-
-IF
-StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
-AND
-NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
-AND
-CharacterHasSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0)
-AND
-NOT ObjectGetFlag(_Player, "LLSPRINT_Debug_RemovedSprintSkill", 1) // In case it was removed manually by the player.
-THEN
-CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
-
-IF
-StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
-AND
-ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, _Count)
-AND
-_Count < 1
-AND
-CharacterGetReservedUserID(_Player, _UserID)
-THEN
-LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715");
-//END_REGION
-
 //REGION VERSIONING
 IF
 GameStarted(_,_)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.8")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.9")
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.0.0.8");
-LLSPRINT_Updater_SetVersion("1.0.0.8");
+LLSPRINT_Updater_RemoveOldVersions("1.0.0.9");
+LLSPRINT_Updater_SetVersion("1.0.0.9");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
@@ -632,6 +597,47 @@ AND
 NOT DB_LeaderLib_ModMenu_RegisteredMenu_OpenEvent("LaughingLeader.ToggleSprint.DefinitiveEdition", _)
 THEN
 DB_LeaderLib_ModMenu_RegisteredMenu_OpenEvent("LaughingLeader.ToggleSprint.DefinitiveEdition", "ToggleSprint_SettingsMenu_OpenRequest");
+//END_REGION
+
+//REGION SAFETY_CHECKS
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
+THEN
+IterateParties("ToggleSprintDE_Iterator_CheckPlayers");
+
+IF
+StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
+AND
+NOT LLSPRINT_QRY_SpeedVariableSet(_Player)
+AND
+DB_ToggleSprint_PartySprintingSpeed(_Flag)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+LLSPRINT_SetSpeed(_Player, _SpeedVal);
+SetVarString(_Player, "ToggleSprint_CurrentSpeedFlag", _Flag);
+
+IF
+StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
+AND
+NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
+AND
+CharacterHasSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0)
+AND
+NOT ObjectGetFlag(_Player, "LLSPRINT_Debug_RemovedSprintSkill", 1) // In case it was removed manually by the player.
+THEN
+CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
+
+IF
+StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
+AND
+ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, _Count)
+AND
+_Count < 1
+AND
+CharacterGetReservedUserID(_Player, _UserID)
+THEN
+LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715");
 //END_REGION
 
 //REGION DEBUG
