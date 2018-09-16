@@ -1,5 +1,8 @@
 Toggle Sprint Definitive Edition Changelog
 =======
+# 1.0.1.0
+* Fix for the sprinting skill / book not being added when starting from the multiplayer lobby.
+
 # 1.0.0.9
 * Added some safety checks for users experiencing issues in multiplayer.
 

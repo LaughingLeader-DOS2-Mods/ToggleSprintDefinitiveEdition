@@ -10,7 +10,10 @@ DebugBreak("[LLSPRINT] Starting Toggle Sprint - Definition Edition.");
 GoalCompleted;
 
 IF
-GameEventSet("GAMEEVENT_GameStarted")
+//GameEventSet("GAMEEVENT_GameStarted")
+RegionStarted(_Level)
+AND
+IsGameLevel(_Level, 1)
 THEN
 LLSPRINT_Internal_Start();
 

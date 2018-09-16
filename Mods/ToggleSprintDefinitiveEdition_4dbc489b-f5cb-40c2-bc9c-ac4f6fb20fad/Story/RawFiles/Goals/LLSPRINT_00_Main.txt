@@ -173,9 +173,9 @@ TimerLaunch("ToggleSprint_Timers_Initialize", 500);
 IF
 GameStarted(_Level, _)
 AND
-NOT GlobalGetFlag("ToggleSprint_Initialized", 1)
+IsGameLevel(_Level, 1)
 AND
-IsCharacterCreationLevel(_Level, 0)
+NOT GlobalGetFlag("ToggleSprint_Initialized", 1)
 THEN
 GlobalSetFlag("ToggleSprint_Initialized");
 TimerLaunch("ToggleSprint_Timers_Initialize", 500);
@@ -198,10 +198,8 @@ IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
 ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, 0)
-AND
-CharacterGetReservedUserID(_Player, _UserID)
 THEN
-LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715");
+ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Player, 1, 0);
 
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
@@ -356,9 +354,9 @@ NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
 AND
 ItemTemplateIsInUserInventory(_Character, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, 0)
 AND
-CharacterGetReservedUserID(_Character, _UserID)
+CharacterIsControlled(_Character, 1)
 THEN
-LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715");
+ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Character, 1, 0);
 
 QRY
 LLSPRINT_QRY_IgnoreCharacter((CHARACTERGUID)_Character)
@@ -412,17 +410,6 @@ THEN
 LLSPRINT_ClearLastSpeedFlag(_Player, _Flag);
 SetVarString(_Player, "ToggleSprint_CurrentSpeedFlag", _Flag);
 ObjectSetFlag(_Player, _Flag);
-
-PROC
-LLSPRINT_AddItemTemplateToUserControlledCharacter((INTEGER)_UserID, (STRING)_Template)
-AND
-DB_IsPlayer(_Player)
-AND
-CharacterGetReservedUserID(_Player, _UserID)
-AND
-CharacterIsControlled(_Player, 1)
-THEN
-ItemTemplateAddTo(_Template, _Player, 1, 0);
 //END_REGION
 
 //REGION TOGGLE_SKILL
@@ -531,12 +518,14 @@ LLSPRINT_ToggleSprinting(_Character, 1);
 
 //REGION VERSIONING
 IF
-GameStarted(_,_)
+GameStarted(_Level, _)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.0.0.9")
+IsGameLevel(_Level, 1)
+AND
+LLSPRINT_Updater_QRY_UpdateNeeded("1.0.1.0")
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.0.0.9");
-LLSPRINT_Updater_SetVersion("1.0.0.9");
+LLSPRINT_Updater_RemoveOldVersions("1.0.1.0");
+LLSPRINT_Updater_SetVersion("1.0.1.0");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
@@ -634,10 +623,8 @@ AND
 ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, _Count)
 AND
 _Count < 1
-AND
-CharacterGetReservedUserID(_Player, _UserID)
 THEN
-LLSPRINT_AddItemTemplateToUserControlledCharacter(_UserID, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715");
+ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Player, 1, 0);
 //END_REGION
 
 //REGION DEBUG
