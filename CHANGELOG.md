@@ -1,5 +1,8 @@
 Toggle Sprint Definitive Edition Changelog
 =======
+# 1.0.2.0b
+* Switched the ToggleSprint sprinting skill and status icon to an icon from DOS2, to help mitigate the texture atlas limit of 7.
+
 # 1.0.2.0
 * Settings Menu
 	* New User Settings submenu.
