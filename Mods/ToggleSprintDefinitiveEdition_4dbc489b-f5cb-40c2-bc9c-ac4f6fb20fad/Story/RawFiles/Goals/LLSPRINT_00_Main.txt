@@ -659,6 +659,7 @@ GlobalClearFlag("ToggleSprint_AddSkillToSummons");
 //END_REGION
 
 //REGION DEBUG
+/*
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
@@ -667,6 +668,7 @@ AND
 NOT DB_IsPlayer(_Player)
 THEN
 DB_IsPlayer(_Player);
+*/
 
 IF
 TextEventSet("togglesprint_openmenu")

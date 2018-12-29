@@ -39,7 +39,7 @@ CharacterMakeNPC(_Companion);
 NOT DB_IsPlayer(_Companion);
 
 IF
-TextEventSet("ts_ewalkoverride")
+TextEventSet("ts_walkoverride")
 AND
 DB_IsPlayer(_Character)
 AND
