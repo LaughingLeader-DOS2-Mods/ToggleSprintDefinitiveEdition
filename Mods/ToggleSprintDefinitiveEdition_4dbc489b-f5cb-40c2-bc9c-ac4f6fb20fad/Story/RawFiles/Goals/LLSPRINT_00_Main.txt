@@ -197,12 +197,16 @@ IterateParties("ToggleSprint_Events_SetInitialSprinting");
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
+NOT QRY_IsSummonOrPartyFollower(_Player)
+AND
 ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, 0)
 THEN
 ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", _Player, 1, 0);
 
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
+AND
+NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
 AND
@@ -214,6 +218,8 @@ CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
 
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
+AND
+NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 DB_ToggleSprint_PartySprintingSpeed(_Flag)
 AND
@@ -277,6 +283,45 @@ AND
 CharacterGetReservedUserID(_Player, _User)
 AND
 ObjectGetFlag(_Player, "ToggleSprint_SprintingEnabled", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLSPRINT_QRY_CharacterIsSprinting((CHARACTERGUID)_Character)
+AND
+ObjectGetFlag(_Character, "ToggleSprint_SprintingEnabled", 1)
+THEN
+DB_NOOP(1);
+
+/*
+QRY
+LLSPRINT_QRY_CharacterIsSprinting((CHARACTERGUID)_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+DB_NOOP(1);
+*/
+
+QRY
+LLSPRINT_QRY_ShouldBeSprinting((CHARACTERGUID)_Character)
+AND
+ObjectGetFlag(_Character, "ToggleSprint_SprintingEnabled", 0)
+THEN
+DB_NOOP(1);
+
+/*
+QRY
+LLSPRINT_QRY_ShouldBeSprinting((CHARACTERGUID)_Character)
+AND
+HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
+THEN
+DB_NOOP(1);
+*/
+
+QRY
+LLSPRINT_QRY_IgnoreCharacter((CHARACTERGUID)_Character)
+AND
+CharacterIsPlayer(_Character, 0)
 THEN
 DB_NOOP(1);
 
@@ -425,10 +470,9 @@ LLSPRINT_QRY_CanSprint(_Character)
 AND
 NOT DB_LLSPRINT_SprintStatusToggled(_Character)
 AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
+LLSPRINT_QRY_ShouldBeSprinting(_Character)
 THEN
 ObjectSetFlag(_Character, "ToggleSprint_SprintingEnabled");
-ApplyStatus(_Character, "LLSPRINT_TOGGLESPRINT", -1.0, 1);
 DB_LLSPRINT_SprintStatusToggled(_Character);
 
 PROC
@@ -438,10 +482,9 @@ LLSPRINT_QRY_CanSprint(_Character)
 AND
 NOT DB_LLSPRINT_SprintStatusToggled(_Character)
 AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+LLSPRINT_QRY_CharacterIsSprinting(_Character)
 THEN
 ObjectClearFlag(_Character, "ToggleSprint_SprintingEnabled");
-RemoveStatus(_Character, "LLSPRINT_TOGGLESPRINT");
 DB_LLSPRINT_SprintStatusToggled(_Character);
 
 PROC
@@ -458,10 +501,9 @@ LLSPRINT_QRY_CanSprint(_Character)
 AND
 NOT DB_LLSPRINT_SprintStatusToggled(_Character)
 AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
+LLSPRINT_QRY_ShouldBeSprinting(_Character)
 THEN
 ObjectSetFlag(_Character, "ToggleSprint_SprintingEnabled");
-ApplyStatus(_Character, "LLSPRINT_TOGGLESPRINT", -1.0, 1);
 DB_LLSPRINT_SprintStatusToggled(_Character);
 
 PROC
@@ -469,10 +511,9 @@ LLSPRINT_ToggleSprinting((CHARACTERGUID)_Character, 0)
 AND
 NOT DB_LLSPRINT_SprintStatusToggled(_Character)
 AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
+LLSPRINT_QRY_CharacterIsSprinting(_Character)
 THEN
 ObjectClearFlag(_Character, "ToggleSprint_SprintingEnabled");
-RemoveStatus(_Character, "LLSPRINT_TOGGLESPRINT");
 DB_LLSPRINT_SprintStatusToggled(_Character);
 
 PROC
@@ -483,11 +524,11 @@ THEN
 NOT DB_LLSPRINT_SprintStatusToggled(_Character);
 
 IF
-CharacterStatusApplied(_Character, "LLSPRINT_TOGGLESPRINT", _)
-AND
-NOT UserGetFlag(_Character, "ToggleSprint_DisableSprintingStatusText", 1)
+ObjectFlagSet("ToggleSprint_SprintingEnabled", (CHARACTERGUID)_Character, _)
 AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
+AND
+NOT UserGetFlag(_Character, "ToggleSprint_DisableSprintingStatusText", 1)
 AND
 GlobalGetFlag("ToggleSprint_SprintingStatusHidden", 1)
 THEN
@@ -530,15 +571,15 @@ GameStarted(_Level, _)
 AND
 IsGameLevel(_Level, 1)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.0.2.0")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.1.0.0")
 THEN
 LLSPRINT_Internal_RegisterMod();
 
 PROC
 LLSPRINT_Internal_RegisterMod()
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.0.2.0");
-LLSPRINT_Updater_SetVersion("1.0.2.0");
+LLSPRINT_Updater_RemoveOldVersions("1.1.0.0");
+LLSPRINT_Updater_SetVersion("1.1.0.0");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
@@ -559,6 +600,15 @@ PROC
 LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
 THEN
 DB_NOOP(1);
+
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, "1.1.0.0")
+AND
+DB_IsPlayer(_Player)
+AND
+HasActiveStatus(_Player, "LLSPRINT_TOGGLESPRINT", 1)
+THEN
+RemoveStatus(_Player, "LLSPRINT_TOGGLESPRINT");
 
 PROC
 LLSPRINT_Updater_SetVersion((STRING)_Version)
@@ -610,6 +660,8 @@ IterateParties("ToggleSprintDE_Iterator_CheckPlayers");
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
 AND
+NOT QRY_IsSummonOrPartyFollower(_Player)
+AND
 NOT LLSPRINT_QRY_SpeedVariableSet(_Player)
 AND
 DB_ToggleSprint_PartySprintingSpeed(_Flag)
@@ -622,6 +674,8 @@ SetVarString(_Player, "ToggleSprint_CurrentSpeedFlag", _Flag);
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
 AND
+NOT QRY_IsSummonOrPartyFollower(_Player)
+AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
 AND
 CharacterHasSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0)
@@ -632,6 +686,8 @@ CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
 
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
+AND
+NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, _Count)
 AND
