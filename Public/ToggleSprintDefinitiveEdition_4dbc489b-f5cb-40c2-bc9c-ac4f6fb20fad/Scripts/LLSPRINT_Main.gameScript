@@ -94,6 +94,7 @@ VARS
 	FLOAT:_Speed
 ON
 	OnCharacterFlagSet("ToggleSprint_WalkSpeedOverrideEnabled", _Character)
+	OnCharacterEvent(_Character, "ToggleSprint_SetWalkingSpeed")
 ACTIONS
 IF "c1"
 	GetVar(_Speed, _Character, "ToggleSprint_WalkSpeed")

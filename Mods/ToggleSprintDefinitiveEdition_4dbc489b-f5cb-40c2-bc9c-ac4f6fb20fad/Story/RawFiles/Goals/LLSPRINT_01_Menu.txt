@@ -116,6 +116,24 @@ DebugBreak(_Flag);
 DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _SpeedVal);
 
 IF
+DB_ToggleSprint_Temp_CurrentMenu(_Instance, _Character, "LLSPRINT_Menu_WalkingSpeed")
+AND
+GetVarFloat(_Character, "ToggleSprint_WalkSpeed", _SpeedVal)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _SpeedVal);
+
+IF
+DB_ToggleSprint_Temp_CurrentMenu(_Instance, _Character, "LLSPRINT_Menu_WalkingSpeed")
+AND
+NOT GetVarFloat(_Character, "ToggleSprint_WalkSpeed", _)
+AND
+DB_ToggleSprint_DefaultWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _SpeedVal);
+
+IF
 ObjectFlagCleared("ToggleSprint_OverridingPartySpeed", (CHARACTERGUID)_Character, _Instance)
 AND
 DB_ToggleSprint_Temp_CurrentMenu(_Instance, _Character, "LLSPRINT_Menu_SprintingSpeedOverride")
@@ -172,6 +190,24 @@ AND
 DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
 THEN
 LLSPRINT_SetPartySpeed(_Flag);
+
+IF
+ObjectFlagSet(_SelectFlag, (CHARACTERGUID)_Character, _Instance)
+AND
+DB_ToggleSprint_Temp_CurrentMenu(_Instance, _Character, "LLSPRINT_Menu_WalkingSpeed")
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+DialogSetVariableFloatForInstance(_Instance, "LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c", _SpeedVal);
+
+IF
+ObjectFlagSet(_SelectFlag, (CHARACTERGUID)_Character, _Instance)
+AND
+DB_ToggleSprint_Temp_CurrentMenu(_Instance, _Character, "LLSPRINT_Menu_WalkingSpeed")
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+THEN
+LLSPRINT_SetPartyWalkSpeed(_Flag);
 //END_REGION
 
 //REGION SPRINTING_SPEED_FLAGS

@@ -107,7 +107,7 @@ LLSPRINT_InitSettings()
 AND
 NOT DB_ToggleSprint_DefaultWalkingSpeed(_)
 THEN
-DB_ToggleSprint_DefaultWalkingSpeed("ToggleSprint_WalkingSpeed_03");
+DB_ToggleSprint_DefaultWalkingSpeed("ToggleSprint_WalkingSpeed_00");
 
 PROC
 LLSPRINT_InitSettings()
@@ -455,6 +455,39 @@ THEN
 LLSPRINT_ClearLastSpeedFlag(_Player, _Flag);
 SetVarString(_Player, "ToggleSprint_CurrentSpeedFlag", _Flag);
 ObjectSetFlag(_Player, _Flag);
+
+PROC
+LLSPRINT_StorePartyWalkSpeed((STRING)_Flag)
+AND
+DB_ToggleSprint_PartyWalkingSpeed(_OtherFlag)
+THEN
+NOT DB_ToggleSprint_PartyWalkingSpeed(_OtherFlag);
+
+PROC
+LLSPRINT_StorePartyWalkSpeed((STRING)_Flag)
+THEN
+DB_ToggleSprint_PartyWalkingSpeed(_Flag);
+
+PROC
+LLSPRINT_SetPartyWalkSpeed((STRING)_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+LLSPRINT_StorePartyWalkSpeed(_Flag);
+PartySetFlag(_Host, _Flag);
+
+PROC
+LLSPRINT_SetPartyWalkSpeed((STRING)_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedVal)
+AND
+DB_IsPlayer(_Player)
+THEN
+SetVarFloat(_Player, "ToggleSprint_WalkSpeed", _SpeedVal);
+ObjectSetFlag(_Player, _Flag);
+SetStoryEvent(_Player, "ToggleSprint_SetWalkingSpeed");
 //END_REGION
 
 //REGION TOGGLE_SKILL
@@ -600,6 +633,12 @@ PROC
 LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
 THEN
 DB_NOOP(1);
+
+PROC
+LLSPRINT_Updater_VersionUpdated((STRING)_Version, "1.1.0.0")
+THEN
+SysClear("DB_ToggleSprint_DefaultWalkingSpeed", 1);
+DB_ToggleSprint_DefaultWalkingSpeed("ToggleSprint_WalkingSpeed_00");
 
 PROC
 LLSPRINT_Updater_VersionUpdated((STRING)_Version, "1.1.0.0")
