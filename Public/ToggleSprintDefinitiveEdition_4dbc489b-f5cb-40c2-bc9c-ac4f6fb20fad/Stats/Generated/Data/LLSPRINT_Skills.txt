@@ -1,7 +1,7 @@
 new entry "Shout_LLSPRINT_ToggleSprint"
 type "SkillData"
 data "SkillType" "Shout"
-data "ForGameMaster" "No"
+data "ForGameMaster" "Yes"
 data "IsEnemySkill" "No"
 data "Ability" "None"
 data "ActionPoints" "0"
