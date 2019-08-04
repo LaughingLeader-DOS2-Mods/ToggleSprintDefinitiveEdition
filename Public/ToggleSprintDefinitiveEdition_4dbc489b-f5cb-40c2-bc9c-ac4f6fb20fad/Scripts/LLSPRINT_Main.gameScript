@@ -26,11 +26,11 @@ ON
 ACTIONS
 	IterateParty("ToggleSprint_Iterator_ToggleInfoStatus")
 
-EVENT LLSPRINT_SprintInfoStatus
+EVENT LLSPRINT_SetSprintInfoStatus
 VARS
 	CHARACTER:_Character
 ON
-	OnCharacterFlagSet("ToggleSprint_EnemySprintEnabled", _Character)
+	OnCharacterFlagSet("ToggleSprint_SprintingEnabled", _Character)
 	OnIterateCharacter(_Character, "ToggleSprint_Iterator_ToggleInfoStatus")
 ACTIONS
 IF "c1"
@@ -39,13 +39,9 @@ THEN
 	IF "!c1"
 		HasGlobalFlag("ToggleSprint_SprintingStatusHidden")
 	THEN
-		CharacterApplyStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, -1)
+		CharacterApplyStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, -1, 1)
 	ELSE
-		IF "c1"
-			CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO)
-		THEN
-			CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, null, 0)
-		ENDIF
+		CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO)
 	ENDIF
 ENDIF
 
@@ -53,13 +49,9 @@ EVENT LLSPRINT_RemoveSprintInfoStatus
 VARS
 	CHARACTER:_Character
 ON
-	OnCharacterFlagCleared("ToggleSprint_EnemySprintEnabled", _Character)
+	OnCharacterFlagCleared("ToggleSprint_SprintingEnabled", _Character)
 ACTIONS
-IF "c1"
-	CharacterHasStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO)
-THEN
-	CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO, null, 0)
-ENDIF
+	CharacterRemoveStatus(_Character, LLSPRINT_TOGGLESPRINT_INFO)
 
 //REGION SET_SPEEDS
 EVENT LLSPRINT_SetSpeed_Sprinting
