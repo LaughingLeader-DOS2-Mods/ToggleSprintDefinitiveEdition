@@ -197,6 +197,8 @@ IterateParties("ToggleSprint_Events_SetInitialSprinting");
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
+GlobalGetFlag("LeaderLib_AutoAddModMenuBooksDisabled", 0)
+AND
 NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, 0)
@@ -404,6 +406,8 @@ CharacterAddSkill(_Character, "Shout_LLSPRINT_ToggleSprint", 0);
 IF
 CharacterJoinedParty(_Character)
 AND
+GlobalGetFlag("LeaderLib_AutoAddModMenuBooksDisabled", 0)
+AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
 AND
 ItemTemplateIsInUserInventory(_Character, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, 0)
@@ -464,7 +468,7 @@ THEN
 NOT DB_ToggleSprint_PartyWalkingSpeed(_OtherFlag);
 
 PROC
-LLSPRINT_StorePartyWalkSpeed((STRING)_Flag)
+LLSPRINT_StorePartyWalkSpeed((STRING)_Flag) 
 THEN
 DB_ToggleSprint_PartyWalkingSpeed(_Flag);
 
@@ -726,6 +730,8 @@ CharacterAddSkill(_Player, "Shout_LLSPRINT_ToggleSprint", 0);
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
 AND
+GlobalGetFlag("LeaderLib_AutoAddModMenuBooksDisabled", 0)
+AND
 NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 ItemTemplateIsInUserInventory(_Player, "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 0, _Count)
@@ -772,6 +778,168 @@ CharacterGetHostCharacter(_Host)
 THEN
 UserSetFlag(_Host, "LLSPRINT_IsHost");
 Proc_StartDialog(0, "ToggleSprint_SettingsMenu", _Host, _Host);
+//END_REGION
+
+//REGION LEADERLIB_GLOBAL_SETTINGS
+IF
+GlobalFlagSet("ToggleSprint_FirstTimeSetupComplete")
+THEN
+LLSPRINT_SaveGlobalSettings();
+
+IF
+GlobalFlagSet("LLSPRINT_SaveGlobalSettings")
+THEN
+LLSPRINT_SaveGlobalSettings();
+GlobalClearFlag("LLSPRINT_SaveGlobalSettings");
+
+PROC
+LLSPRINT_SaveGlobalSettings()
+AND
+GlobalGetFlag("LeaderLib_Initialized", 1)
+AND
+GlobalGetFlag("LeaderLib_ExtenderIsActive", 1)
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+SetStoryEvent(_Host, "LeaderLib_Commands_SaveGlobalSettings");
+
+PROC
+LeaderLib_GlobalSettings_InitModRegistration()
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_FirstTimeSetupComplete");
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_CombatSprintingEnabled", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_EnemySprintingEnabled", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_EnemyWalkSpeedOverrideEnabled", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_CanOverridePartySpeed", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_SprintingStatusHidden", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed", 5);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartyWalkingSpeed", 2);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemySprintingSpeed", 5);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemyWalkingSpeed", 2);
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed")
+AND
+DB_ToggleSprint_PartySprintingSpeed(_Flag)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_SetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed", (INTEGER)_Speed)
+AND
+IntegerMax(_Speed, 2, _ClampedA)
+AND
+IntegerMin(_Speed, 11, _ClampedB)
+AND
+Real(_ClampedB, _SpeedR)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedR)
+THEN
+LLSPRINT_SetPartySpeed(_Flag);
+
+//If users assign a new speed
+/*
+PROC
+LeaderLib_GlobalSettings_SetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed", (INTEGER)_Speed)
+AND
+IntegerMax(_Speed, 1, _ClampedA)
+AND
+IntegerMin(_Speed, 999, _ClampedB)
+AND
+Real(_ClampedB, _SpeedR)
+AND
+NOT DB_ToggleSprint_SprintingSpeed(_, _, _SpeedR)
+AND
+SysCount("DB_ToggleSprint_SprintingSpeed", 3, _Count)
+AND
+IntegerSubtract(_Count, 1, _FlagInt)
+AND
+IntegertoString(_FlagInt, _FlagIntStr)
+AND
+StringConcatenate("ToggleSprint_SelectSpeed_", _FlagIntStr, _NewSelectFlag)
+AND
+StringConcatenate("ToggleSprint_SprintingSpeed_", _FlagIntStr, _NewFlag)
+THEN
+DB_ToggleSprint_SprintingSpeed(_NewSelectFlag, _NewFlag, _SpeedR);
+*/
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartyWalkingSpeed")
+AND
+DB_ToggleSprint_PartyWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartyWalkingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_SetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartyWalkingSpeed", (INTEGER)_Speed)
+AND
+IntegerMax(_Speed, 2, _ClampedA)
+AND
+IntegerMin(_Speed, 9, _ClampedB)
+AND
+Real(_ClampedB, _SpeedR)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedR)
+THEN
+LLSPRINT_SetPartyWalkSpeed(_Flag);
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemySprintingSpeed")
+AND
+DB_ToggleSprint_EnemySprintingSpeed(_Flag)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemySprintingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_SetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemySprintingSpeed", (INTEGER)_Speed)
+AND
+IntegerMax(_Speed, 2, _ClampedA)
+AND
+IntegerMin(_Speed, 11, _ClampedB)
+AND
+Real(_ClampedB, _SpeedR)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedR)
+THEN
+SysClear("DB_ToggleSprint_EnemySprintingSpeed", 1);
+DB_ToggleSprint_EnemySprintingSpeed(_Flag);
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemyWalkingSpeed")
+AND
+DB_ToggleSprint_EnemyWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemyWalkingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_SetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemyWalkingSpeed", (INTEGER)_Speed)
+AND
+IntegerMax(_Speed, 2, _ClampedA)
+AND
+IntegerMin(_Speed, 9, _ClampedB)
+AND
+Real(_ClampedB, _SpeedR)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedR)
+THEN
+SysClear("DB_ToggleSprint_EnemyWalkingSpeed", 1);
+DB_ToggleSprint_EnemyWalkingSpeed(_Flag);
 //END_REGION
 EXITSECTION
 
