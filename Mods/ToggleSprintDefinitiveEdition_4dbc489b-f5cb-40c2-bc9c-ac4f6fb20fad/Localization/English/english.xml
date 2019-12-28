@@ -1,0 +1,47 @@
+<contentList>
+	<content contentuid="h2e8c23e6g31a1g4f25gbe50g51db0f7e33d9" Source ="LLSPRINT_Misc.lsb" Key="LLSPRINT_StatusText_SettingsBlocked">&lt;font color=&apos;#FF0000&apos;&gt;*You can&apos;t use that in combat!*&lt;/font&gt;</content>
+	<content contentuid="hd50363ccg9e68g4f15gb949gcb12bdf88277" Source ="LLSPRINT_Misc.lsb" Key="LLSPRINT_StatusText_SprintingDisabled">&lt;font color=&apos;#FF6347&apos;&gt;Sprinting Disabled&lt;/font&gt;</content>
+	<content contentuid="hbe25784dg569fg47c5ga016gf70821c8ef87" Source ="LLSPRINT_Misc.lsb" Key="LLSPRINT_StatusText_SprintingEnabled">&lt;font color=&apos;#00FF00&apos;&gt;Sprinting&lt;/font&gt;</content>
+	<content contentuid="h8fcbe065g8787g42fcg8f40gb686c30dba4f" Source ="LLSPRINT_Statuses.lsb" Key="LLSPRINT_TOGGLESPRINT_INFO_Desc">Character is sprinting.</content>
+	<content contentuid="h2d5294cfgc94fg47cdgaad5g5e3f1115becf" Source ="LLSPRINT_Statuses.lsb" Key="LLSPRINT_TOGGLESPRINT_INFO_Name">Sprinting</content>
+	<content contentuid="h13624675gd10bg4e9bg816ag6b4d90d0bcc4" Source ="ToggleSprint_Debug_RecruitCharacter.lsj">Hello!</content>
+	<content contentuid="hba191917gd071g4e5cg9245g643e7c0d4b0d" Source ="ToggleSprint_Debug_RecruitCharacter.lsj">Follow me.</content>
+	<content contentuid="h1e42c41dg7cd8g4f33g89cbgcacc7a0dc55c" Source ="ToggleSprint_Debug_RecruitCharacter.lsj">Okay.</content>
+	<content contentuid="h511dccf3g99bbg4d54g99e8g10a8d4febe3a" Source ="ToggleSprint_Debug_RecruitCharacter.lsj">Let&apos;s part ways.</content>
+	<content contentuid="hcdbca47fgd068g490bg9412g55b5de5e2fbb" Source ="ToggleSprint_SettingsMenu.lsj">Loading menu...</content>
+	<content contentuid="h5239218cg520eg4970g8e69g81c169b8a589" Source ="ToggleSprint_SettingsMenu.lsj">Settings updated.</content>
+	<content contentuid="h53adc312g3824g4169gad25g04c2b3f569ae" Source ="ToggleSprint_SettingsMenu.lsj">[Speed] Set Party Walk Speed</content>
+	<content contentuid="h382df56eg0e78g4b61g8b31gc6abd691aedb" Source ="ToggleSprint_SettingsMenu.lsj">Party speed reset.</content>
+	<content contentuid="h0adb51c0gd539g4df1g98feg4e7b114c0966" Source ="ToggleSprint_SettingsMenu.lsj">Commands</content>
+	<content contentuid="ha250fd5bg94b5g4addga30fg72bc1ea3f77e" Source ="ToggleSprint_SettingsMenu.lsj">Remove Toggle Sprint Skill</content>
+	<content contentuid="ha9e54334gcf28g4a67g8ef6gaa400d19d772" Source ="ToggleSprint_SettingsMenu.lsj">Host Settings</content>
+	<content contentuid="h672fcb27gdcc8g41bcgb549g26f7d6e8964b" Source ="ToggleSprint_SettingsMenu.lsj">[RESET] Reset Party Speed to Default</content>
+	<content contentuid="hea89f5f1g9212g47afgb2e2gec484cc8b891" Source ="ToggleSprint_SettingsMenu.lsj">Enable Sprinting Status Text</content>
+	<content contentuid="h0e53ce6ag784bg430ag9688g2a406357d5ad" Source ="ToggleSprint_SettingsMenu.lsj">Enable Adding Toggle Skill to Summons Automatically</content>
+	<content contentuid="hbe2be67bgb1a3g4dbfgb6e2g487ea8ff5eaf" Source ="ToggleSprint_SettingsMenu.lsj">[Speed] Set NPC Sprinting Speed for Combat</content>
+	<content contentuid="hfe075c4cgf6a3g4c96g9afeg76928529f4a8" Source ="ToggleSprint_SettingsMenu.lsj">Running command...</content>
+	<content contentuid="hb00f016agfbb0g4966ga4fagd1b364fab19d" Source ="ToggleSprint_SettingsMenu.lsj">Disable Sprinting Status Text</content>
+	<content contentuid="h59353848g299ag4a84ga3afgff925401cc4b" Source ="ToggleSprint_SettingsMenu.lsj">[Speed] Set Party Sprint Speed</content>
+	<content contentuid="h7863e8eegc4c8g4e0bgac67g064d888e5dd1" Source ="ToggleSprint_SettingsMenu.lsj">[Speed] Set Character Sprint Speed</content>
+	<content contentuid="hc368e1ebge876g4cc5g93c9g65014bee5925" Source ="ToggleSprint_SettingsMenu.lsj">Speed override cleared.</content>
+	<content contentuid="h4f6e6b3cg09b3g45e5gb77egbb89f6f40ddf" Source ="ToggleSprint_SettingsMenu.lsj">Commands Menu</content>
+	<content contentuid="h7ff12c81g4b92g4f5dgb843g79b928cb2b70" Source ="ToggleSprint_SettingsMenu.lsj">Confirm</content>
+	<content contentuid="hc542b422gb582g4502g80abg1967eead9f9d" Source ="ToggleSprint_SettingsMenu.lsj">Speed updated.</content>
+	<content contentuid="hf62f44d7gac25g4b3ag8a99g91a5abb980f0" Source ="ToggleSprint_SettingsMenu.lsj">Add Toggle Sprint Settings Book</content>
+	<content contentuid="h25b046f7g4947g48edg9faegbd12ef7f9307" Source ="ToggleSprint_SettingsMenu.lsj">[Toggle Sprint] Settings Menu</content>
+	<content contentuid="h2d015f06gdd5eg4c9fgb2e6g898c2805454d" Source ="ToggleSprint_SettingsMenu.lsj">Cancel</content>
+	<content contentuid="h960332b6g8dcag42d1gb8ebgc5dc63aa7e6d" Source ="ToggleSprint_SettingsMenu.lsj">User Settings</content>
+	<content contentuid="h1d3eeb28gebd6g4fbfg866ag7e5f5fd4ae05" Source ="ToggleSprint_SettingsMenu.lsj">[SETUP] Open Setup Menu</content>
+	<content contentuid="h6bfe874eg6a4fg4cfaga382g62fd27b4c1d7" Source ="ToggleSprint_SettingsMenu.lsj">Opening setup menu...</content>
+	<content contentuid="h21c2062eg75f8g4adaga29bg0ffd9efd2c0e" Source ="ToggleSprint_SettingsMenu.lsj">Reset party&apos;s speed to default?</content>
+	<content contentuid="h8cf85135g081cg4edbga8c9g99674afc0c21" Source ="ToggleSprint_SettingsMenu.lsj">Disabling Adding Toggle Skill to Summons Automatically</content>
+	<content contentuid="h799b6d97ga7beg4a3bg884dg018a804cfcdd" Source ="ToggleSprint_SettingsMenu.lsj">[Speed] Set NPC Walking Speed for Combat</content>
+	<content contentuid="hda553760gbb91g4b3cg8a59g9d0648f3838c" Source ="ToggleSprint_SettingsMenu.lsj">Add Toggle Sprint Skill</content>
+	<content contentuid="h591e6fb7g549ag4848g8377g4d7166bc0825" Source ="ToggleSprint_SettingsMenu.lsj">[LLSPRINT_Speed13_c9a462e0-07cc-4d2f-bb15-b1119739ab21]</content>
+	<content contentuid="h05d1db3ag3d34g422cgaa2eg5ab5838f5678" Source ="ToggleSprint_Setup.lsj">Use [Recommended] Settings - Sprinting is enabled by default, sprinting is enabled in combat, and non-player characters in combat have increased movement speed (does not affect AP costs).</content>
+	<content contentuid="h07b37cd6g0589g4802gbf88g17d753f8f88d" Source ="ToggleSprint_Setup.lsj">Open settings menu.</content>
+	<content contentuid="hf7e41addg8240g44a5g96c5g60417bfb68db" Source ="ToggleSprint_Setup.lsj">Setup complete.</content>
+	<content contentuid="he2ff7ee4g0e25g4e30gb613g2e3665c35d82" Source ="ToggleSprint_Setup.lsj">Use [Advanced] Settings - All recommended settings are enabled, individual characters can override their sprinting speeds, and the sprinting status is hidden.</content>
+	<content contentuid="h952f5c05gbc15g45e3gbf74g91ce65198160" Source ="ToggleSprint_Setup.lsj">[Toggle Sprint] First Time Setup</content>
+	<content contentuid="h08b2ad11g1307g4ebag9544g3d7bdd4f2d24" Source ="ToggleSprint_Setup.lsj">Use [Lite] Settings - Sprinting is enabled by default, NPCs in combat use their default speed, and disable optional settings.</content>
+</contentList>
