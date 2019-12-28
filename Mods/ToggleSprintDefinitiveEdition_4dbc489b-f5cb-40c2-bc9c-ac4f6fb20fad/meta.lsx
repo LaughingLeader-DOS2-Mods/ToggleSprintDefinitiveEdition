@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <save>
     <header version="2" />
-    <version major="3" minor="6" revision="4" build="1" />
+    <version major="3" minor="6" revision="6" build="0" />
     <region id="Config">
         <node id="root">
             <children>
@@ -9,7 +9,9 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Toggle Sprint increases the default running speed in a way that's customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more." type="30" />
+                    <attribute id="Description" value="Toggle Sprint increases the default running speed in a way that&apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more." type="30" />
+                    <attribute id="DescriptionName" value="LLSPRINT_Mod_Description" handle="h8ab32987g3218g4d5fgb569g1dd98bf52280" type="28" />
+                    <attribute id="DisplayName" value="LLSPRINT_Mod_DisplayName" handle="ha3aeaea6gf95fg4409gb24eg7ade1fca2b0f" type="28" />
                     <attribute id="Folder" value="ToggleSprintDefinitiveEdition_4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />
@@ -25,7 +27,7 @@
                     <attribute id="Version" value="301989888" type="4" />
                     <children>
                         <node id="PublishVersion">
-                            <attribute id="Version" value="908857753" type="4" />
+                            <attribute id="Version" value="909321303" type="4" />
                         </node>
                         <node id="Scripts">
                             <children>
