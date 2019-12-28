@@ -11,7 +11,7 @@ THEN
 DB_Origins((CHARACTERGUID)S_GLO_CharacterCreationDummy_001_da072fe7-fdd5-42ae-9139-8bd4b9fca406);
 
 IF
-RegionStarted("TestLevel_LL_ToggleSprint")
+RegionStarted("_TMPL_Sandbox")
 THEN
 GoalCompleted;
 EXITSECTION

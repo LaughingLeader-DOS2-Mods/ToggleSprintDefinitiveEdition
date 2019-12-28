@@ -770,7 +770,7 @@ GlobalClearFlag("ToggleSprint_AddSkillToSummons");
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
-DB_CurrentLevel("TestLevel_LL_ToggleSprintDE")
+DB_CurrentLevel("_TMPL_Sandbox")
 AND
 NOT DB_IsPlayer(_Player)
 THEN
