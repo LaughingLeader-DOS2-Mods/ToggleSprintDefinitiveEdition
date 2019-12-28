@@ -208,6 +208,8 @@ ItemTemplateAddTo("BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
 AND
+GlobalGetFlag("ToggleSprint_AutoAddSprintSkillDisabled", 0)
+AND
 NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
@@ -394,6 +396,8 @@ LLSPRINT_ToggleSprinting(_Character, 1);
 
 IF
 CharacterJoinedParty(_Character)
+AND
+GlobalGetFlag("ToggleSprint_AutoAddSprintSkillDisabled", 0)
 AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Character)
 AND
@@ -717,6 +721,8 @@ SetVarString(_Player, "ToggleSprint_CurrentSpeedFlag", _Flag);
 IF
 StoryEvent((CHARACTERGUID)_Player, "ToggleSprintDE_Iterator_CheckPlayers")
 AND
+GlobalGetFlag("ToggleSprint_AutoAddSprintSkillDisabled", 0)
+AND
 NOT QRY_IsSummonOrPartyFollower(_Player)
 AND
 NOT LLSPRINT_QRY_IgnoreCharacter(_Player)
@@ -780,12 +786,43 @@ UserSetFlag(_Host, "LLSPRINT_IsHost");
 Proc_StartDialog(0, "ToggleSprint_SettingsMenu", _Host, _Host);
 //END_REGION
 
-//REGION LEADERLIB_GLOBAL_SETTINGS
+//REGION GLOBAL_SETTINGS_SPRINTING_SKILL
 IF
-GlobalFlagSet("ToggleSprint_FirstTimeSetupComplete")
+GlobalFlagSet("ToggleSprint_AutoAddSprintSkillDisabled")
+AND
+NOT DB_DialogName("ToggleSprint_SettingsMenu", _)
 THEN
-LLSPRINT_SaveGlobalSettings();
+IterateParties("LLSPRINT_Iterator_RemoveSprintingSkill");
 
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLSPRINT_Iterator_RemoveSprintingSkill")
+AND
+CharacterHasSkill(_Char, "Shout_LLSPRINT_ToggleSprint", 1)
+THEN
+CharacterRemoveSkill(_Char, "Shout_LLSPRINT_ToggleSprint");
+
+IF
+GlobalFlagCleared("ToggleSprint_AutoAddSprintSkillDisabled")
+AND
+NOT DB_DialogName("ToggleSprint_SettingsMenu", _)
+THEN
+IterateParties("LLSPRINT_Iterator_AddSprintingSkill");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLSPRINT_Iterator_AddSprintingSkill")
+AND
+NOT QRY_IsSummonOrPartyFollower(_Char)
+AND
+NOT LLSPRINT_QRY_IgnoreCharacter(_Char)
+AND
+CharacterHasSkill(_Char, "Shout_LLSPRINT_ToggleSprint", 0)
+AND
+NOT ObjectGetFlag(_Char, "LLSPRINT_Debug_RemovedSprintSkill", 1) // In case it was removed manually by the player.
+THEN
+CharacterAddSkill(_Char, "Shout_LLSPRINT_ToggleSprint", 0);
+//END_REGION
+
+//REGION LEADERLIB_GLOBAL_SETTINGS
 IF
 GlobalFlagSet("LLSPRINT_SaveGlobalSettings")
 THEN
@@ -806,16 +843,18 @@ SetStoryEvent(_Host, "LeaderLib_Commands_SaveGlobalSettings");
 PROC
 LeaderLib_GlobalSettings_InitModRegistration()
 THEN
-DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_FirstTimeSetupComplete");
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_AddSkillToSummons", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_AutoAddSprintSkillDisabled", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_CanOverridePartySpeed", 1);
 DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_CombatSprintingEnabled", 1);
 DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_EnemySprintingEnabled", 1);
 DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_EnemyWalkSpeedOverrideEnabled", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_CanOverridePartySpeed", 1);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_FirstTimeSetupComplete");
 DB_LeaderLib_ModApi_GlobalSettings_Register_Flag("ToggleSprint_DefinitiveEdition", "LaughingLeader", "ToggleSprint_SprintingStatusHidden", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed", 5);
-DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartyWalkingSpeed", 2);
 DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemySprintingSpeed", 5);
 DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "EnemyWalkingSpeed", 2);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed", 5);
+DB_LeaderLib_ModApi_GlobalSettings_Register_Integer("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartyWalkingSpeed", 2);
 
 PROC
 LeaderLib_GlobalSettings_GetIntegerVariable("ToggleSprint_DefinitiveEdition", "LaughingLeader", "PartySprintingSpeed")

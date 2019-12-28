@@ -1,7 +1,6 @@
 {
    "save" : {
       "header" : {
-         "time" : 1535055687,
          "version" : "2.0.8.2"
       },
       "regions" : {
@@ -512,6 +511,8 @@
                               "flaggroup" : [
                                  {
                                     "flag" : [
+                                       {
+                                          "name" : {"type" : 22, "value" : "LLSPRINT_SaveGlobalSettings"},"value" : {"type" : 19, "value" : 1}},
                                        {
                                           "name" : {"type" : 22, "value" : "ToggleSprint_FirstTimeSetupComplete"},"value" : {"type" : 19, "value" : 1}}
                                     ],"type" : {"type" : 22, "value" : "Global"}}
