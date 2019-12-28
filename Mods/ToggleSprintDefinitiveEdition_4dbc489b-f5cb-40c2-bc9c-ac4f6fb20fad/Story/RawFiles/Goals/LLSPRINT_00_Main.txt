@@ -608,15 +608,15 @@ GameStarted(_Level, _)
 AND
 IsGameLevel(_Level, 1)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.1.0.0")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.2.0.0")
 THEN
 LLSPRINT_Internal_RegisterMod();
 
 PROC
 LLSPRINT_Internal_RegisterMod()
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.1.0.0");
-LLSPRINT_Updater_SetVersion("1.1.0.0");
+LLSPRINT_Updater_RemoveOldVersions("1.2.0.0");
+LLSPRINT_Updater_SetVersion("1.2.0.0");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
