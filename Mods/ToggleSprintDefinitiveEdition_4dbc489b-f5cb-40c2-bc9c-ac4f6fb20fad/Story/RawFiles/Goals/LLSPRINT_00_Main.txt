@@ -826,8 +826,8 @@ CharacterAddSkill(_Char, "Shout_LLSPRINT_ToggleSprint", 0);
 IF
 GlobalFlagSet("LLSPRINT_SaveGlobalSettings")
 THEN
-LLSPRINT_SaveGlobalSettings();
 GlobalClearFlag("LLSPRINT_SaveGlobalSettings");
+LLSPRINT_SaveGlobalSettings();
 
 PROC
 LLSPRINT_SaveGlobalSettings()
@@ -865,7 +865,7 @@ DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _Speed)
 AND
 Integer(_Speed, _SpeedInt)
 THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", _SpeedInt);
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", _SpeedInt);
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", (INTEGER)_Speed)
@@ -915,7 +915,7 @@ DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
 AND
 Integer(_Speed, _SpeedInt)
 THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", _SpeedInt);
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", _SpeedInt);
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", (INTEGER)_Speed)
@@ -939,7 +939,7 @@ DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _Speed)
 AND
 Integer(_Speed, _SpeedInt)
 THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", _SpeedInt);
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", _SpeedInt);
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", (INTEGER)_Speed)
@@ -964,7 +964,7 @@ DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
 AND
 Integer(_Speed, _SpeedInt)
 THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", _SpeedInt);
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", _SpeedInt);
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", (INTEGER)_Speed)
