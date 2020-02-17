@@ -649,15 +649,15 @@ GameStarted(_Level, _)
 AND
 IsGameLevel(_Level, 1)
 AND
-LLSPRINT_Updater_QRY_UpdateNeeded("1.2.0.0")
+LLSPRINT_Updater_QRY_UpdateNeeded("1.3.0.0")
 THEN
 LLSPRINT_Internal_RegisterMod();
 
 PROC
 LLSPRINT_Internal_RegisterMod()
 THEN
-LLSPRINT_Updater_RemoveOldVersions("1.2.0.0");
-LLSPRINT_Updater_SetVersion("1.2.0.0");
+LLSPRINT_Updater_RemoveOldVersions("1.3.0.0");
+LLSPRINT_Updater_SetVersion("1.3.0.0");
 
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
@@ -679,6 +679,7 @@ LLSPRINT_Updater_VersionUpdated((STRING)_Version, (STRING)_NextVersion)
 THEN
 DB_NOOP(1);
 
+/*
 PROC
 LLSPRINT_Updater_VersionUpdated((STRING)_Version, "1.1.0.0")
 THEN
@@ -693,6 +694,7 @@ AND
 HasActiveStatus(_Player, "LLSPRINT_TOGGLESPRINT", 1)
 THEN
 RemoveStatus(_Player, "LLSPRINT_TOGGLESPRINT");
+*/
 
 PROC
 LLSPRINT_Updater_SetVersion((STRING)_Version)
