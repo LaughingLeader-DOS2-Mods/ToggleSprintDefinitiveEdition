@@ -1,0 +1,6 @@
+Key	Content
+LLSPRINT_Mod_Description	Toggle Sprint increases the default running speed in a way that&apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.
+LLSPRINT_Mod_DisplayName	Toggle Sprint - Definitive Edition
+LLSPRINT_StatusText_SettingsBlocked	<font color='#FF0000'>*You can't use that in combat!*</font>
+LLSPRINT_StatusText_SprintingDisabled	<font color='#FF6347'>Sprinting Disabled</font>
+LLSPRINT_StatusText_SprintingEnabled	<font color='#00FF00'>Sprinting</font>
