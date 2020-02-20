@@ -662,16 +662,16 @@ LLSPRINT_Updater_SetVersion("1.3.0.0");
 QRY
 LLSPRINT_Updater_QRY_UpdateNeeded((STRING)_Version)
 AND
-NOT DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version)
+NOT DB_Mods_Registered("ToggleSprintDefinitiveEdition", "LaughingLeader", _Version)
 THEN
 DB_NOOP(1);
 
 PROC
 LLSPRINT_Updater_RemoveOldVersions((STRING)_NextVersion)
 AND
-DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version)
+DB_Mods_Registered("ToggleSprintDefinitiveEdition", "LaughingLeader", _Version)
 THEN
-NOT DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version);
+NOT DB_Mods_Registered("ToggleSprintDefinitiveEdition", "LaughingLeader", _Version);
 LLSPRINT_Updater_VersionUpdated(_Version, _NextVersion);
 
 PROC
@@ -702,17 +702,24 @@ AND
 GlobalGetFlag("LeaderLib_Initialized", 1)
 THEN
 //Fire LeaderLib ModUpdated procs.
-DB_LeaderLib_ModApi_RegisterMod("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version);
+DB_LeaderLib_ModApi_RegisterMod("ToggleSprintDefinitiveEdition", "LaughingLeader", _Version);
 
 PROC
 LLSPRINT_Updater_SetVersion((STRING)_Version)
 AND
 NOT GlobalGetFlag("LeaderLib_Initialized", 1)
 THEN
-DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _Version);
+DB_Mods_Registered("ToggleSprintDefinitiveEdition", "LaughingLeader", _Version);
 //END_REGION
 
 //REGION LEADERLIB
+IF
+SavegameLoading(_,_,_,_)
+AND
+DB_Mods_Registered("ToggleSprint_DefinitiveEdition", "LaughingLeader", _)
+THEN
+DB_LeaderLib_ModApi_RenameModID("ToggleSprint_DefinitiveEdition", "ToggleSprintDefinitiveEdition");
+
 // [BEGIN_NO_OSITOOLS]
 IF
 StoryEvent(_, "LeaderLib_Initialized")
@@ -724,9 +731,9 @@ DB_ToggleSprint_RegisteredLeaderLibSettings(1);
 IF
 DB_ToggleSprint_RegisteredLeaderLibSettings(1)
 THEN
-DB_LeaderLib_ModApi_RegisterActiveGoal("ToggleSprint_DefinitiveEdition", "LaughingLeader", "LLSPRINT_00_Main");
-DB_LeaderLib_ModApi_RegisterMenu("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprint_DefinitiveEdition", "LaughingLeader");
-DB_LeaderUpdater_RegisteredUUID("ToggleSprint_DefinitiveEdition", "LaughingLeader", 3cdec0ff-5d98-e859-87cd-c663b7b9fcfe);
+DB_LeaderLib_ModApi_RegisterActiveGoal("ToggleSprintDefinitiveEdition", "LaughingLeader", "LLSPRINT_00_Main");
+DB_LeaderLib_ModApi_RegisterMenu("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprintDefinitiveEdition", "LaughingLeader");
+DB_LeaderUpdater_RegisteredUUID("ToggleSprintDefinitiveEdition", "LaughingLeader", 3cdec0ff-5d98-e859-87cd-c663b7b9fcfe);
 DB_LeaderLib_ModMenu_RegisteredMenu_OpenEvent("LaughingLeader.ToggleSprint.DefinitiveEdition", "ToggleSprint_SettingsMenu_OpenRequest");
 DB_LeaderLib_Treasure_TreasureItemTemplates("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1, "");
 DB_LeaderLib_Treasure_ItemMaxAmount("LeaderLib.LeaderTrader.ModBooks", "BOOK_Book_LLSPRINT_Settings_54bb6a3e-1b5c-4e95-9f9b-06d87f3e7715", 1);
@@ -762,9 +769,9 @@ DB_LeaderLib_ModMenu_RegisteredMenu_OpenEvent("3cdec0ff-5d98-e859-87cd-c663b7b9f
 PROC
 LeaderLib_Register_ModMenu("3cdec0ff-5d98-e859-87cd-c663b7b9fcfe", (STRING)_Dialog, (STRING)_DisplayName)
 AND
-DB_LeaderLib_ModMenu_RegisteredMenuData("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprint_DefinitiveEdition", "LaughingLeader")
+DB_LeaderLib_ModMenu_RegisteredMenuData("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprintDefinitiveEdition", "LaughingLeader")
 THEN
-NOT DB_LeaderLib_ModMenu_RegisteredMenuData("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprint_DefinitiveEdition", "LaughingLeader");
+NOT DB_LeaderLib_ModMenu_RegisteredMenuData("LaughingLeader.ToggleSprint.DefinitiveEdition", "[Toggle Sprint] Settings", "ToggleSprint_SettingsMenu", "ToggleSprintDefinitiveEdition", "LaughingLeader");
 */
 //END_REGION
 
