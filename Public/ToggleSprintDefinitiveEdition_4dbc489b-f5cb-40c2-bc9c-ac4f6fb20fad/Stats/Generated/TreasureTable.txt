@@ -1,0 +1,21 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+
+new treasuretable "FTJ_Tinkerer"
+CanMerge 1
+new subtable "1,1"
+object category "I_LLSPRINT_Book_Settings",1,0,0,0,0,0,0,1
+
+new treasuretable "RC_DW_Trader_PotionsIngredientsWaterSummonNecro"
+CanMerge 1
+new subtable "1,1"
+object category "I_LLSPRINT_Book_Settings",1,0,0,0,0,0,0,1
+
+new treasuretable "COS_Trayde"
+CanMerge 1
+new subtable "1,1"
+object category "I_LLSPRINT_Book_Settings",1,0,0,0,0,0,0,1
+
+new treasuretable "ARX_Trader_Books"
+CanMerge 1
+new subtable "1,1"
+object category "I_LLSPRINT_Book_Settings",1,0,0,0,0,0,0,1
