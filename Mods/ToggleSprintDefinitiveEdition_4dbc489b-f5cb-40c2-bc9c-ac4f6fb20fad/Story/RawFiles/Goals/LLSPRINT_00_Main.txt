@@ -749,20 +749,6 @@ DB_LeaderLib_Treasure_ItemMaxAmount("LeaderLib.LeaderTrader.ModBooks", "BOOK_Boo
 PROC
 LeaderLib_Mods_OnModRegistered(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, (INTEGER)_Version, (INTEGER)_Major, (INTEGER)_Minor, (INTEGER)_Revision, (INTEGER)_Build)
 THEN
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_AddSkillToSummons", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_AutoAddSprintSkillDisabled", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_CanOverridePartySpeed", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_CombatSprintingEnabled", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_EnemySprintingEnabled", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_EnemyWalkSpeedOverrideEnabled", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_FirstTimeSetupComplete");
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_SprintingStatusHidden", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_LadderSprintingDisabled", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalFlag(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "ToggleSprint_FasterLadderSprinting", 1);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalInteger(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", 5);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalInteger(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", 2);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalInteger(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", 5);
-DB_LeaderLib_ModApi_GlobalSettings_Register_GlobalInteger(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", 2);
 DB_LeaderLib_ModApi_RegisterMenu("3cdec0ff-5d98-e859-87cd-c663b7b9fcfe", "ToggleSprint_SettingsMenu", "[Toggle Sprint] Settings");
 DB_LeaderLib_ModMenu_RegisteredMenu_OpenEvent("3cdec0ff-5d98-e859-87cd-c663b7b9fcfe", "ToggleSprint_SettingsMenu_OpenRequest");
 /*
@@ -793,6 +779,7 @@ CharacterGetHostCharacter(_Host)
 THEN
 SetStoryEvent(_Host, "LeaderLib_Commands_SaveGlobalSettings");
 
+/*
 PROC
 LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed")
 AND
@@ -816,32 +803,6 @@ AND
 DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedR)
 THEN
 LLSPRINT_SetPartySpeed(_Flag);
-
-//If users assign a new speed
-/*
-PROC
-LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", (INTEGER)_Speed)
-AND
-IntegerMax(_Speed, 1, _ClampedA)
-AND
-IntegerMin(_Speed, 999, _ClampedB)
-AND
-Real(_ClampedB, _SpeedR)
-AND
-NOT DB_ToggleSprint_SprintingSpeed(_, _, _SpeedR)
-AND
-SysCount("DB_ToggleSprint_SprintingSpeed", 3, _Count)
-AND
-IntegerSubtract(_Count, 1, _FlagInt)
-AND
-IntegertoString(_FlagInt, _FlagIntStr)
-AND
-StringConcatenate("ToggleSprint_SelectSpeed_", _FlagIntStr, _NewSelectFlag)
-AND
-StringConcatenate("ToggleSprint_SprintingSpeed_", _FlagIntStr, _NewFlag)
-THEN
-DB_ToggleSprint_SprintingSpeed(_NewSelectFlag, _NewFlag, _SpeedR);
-*/
 
 PROC
 LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed")
@@ -916,6 +877,7 @@ DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedR)
 THEN
 SysClear("DB_ToggleSprint_EnemyWalkingSpeed", 1);
 DB_ToggleSprint_EnemyWalkingSpeed(_Flag);
+*/
 //END_REGION
 
 //REGION SAFETY_CHECKS
