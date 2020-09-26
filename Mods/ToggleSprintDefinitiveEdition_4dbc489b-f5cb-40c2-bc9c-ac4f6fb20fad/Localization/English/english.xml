@@ -90,7 +90,7 @@
 	<content contentuid="h08b2ad11g1307g4ebag9544g3d7bdd4f2d24" Source="">Use [Lite] Settings - Sprinting is enabled by default, NPCs in combat use their default speed, and disable optional settings.</content>
 	<content contentuid="hbce60dc9g0641g4463gb503g951338bd4664" Source="" Key="ToggleSprint_AddSkillToSummons">Add Sprint Skill to Summons</content>
 	<content contentuid="hd303f812gecd8g4b87ga4fag33bb62ef5e9a" Source="" Key="ToggleSprint_AddSkillToSummons_Description">Automatically add the toggle sprint skill to summons.</content>
-	<content contentuid="he22f2fcbg0000g46cbga04fg3d271e3f9a9e" Source="" Key="ToggleSprint_AutoAddSprintSkillDisabled">Disable Adding Sprint Skill</content>
+	<content contentuid="he22f2fcbg0000g46cbga04fg3d271e3f9a9e" Source="" Key="ToggleSprint_AutoAddSprintSkillDisabled">Disable Automatically Adding Sprint Skill</content>
 	<content contentuid="h84578323gd0b0g4757ga80bg58d8eb0733cd" Source="" Key="ToggleSprint_AutoAddSprintSkillDisabled_Description">Disable automatically adding the toggle sprint skill. Useful if sprinting is enabled by default.</content>
 	<content contentuid="h8f12510egd3cfg498bgae59g41b01d3b1105" Source="" Key="ToggleSprint_CombatSprintingEnabled">Enable Sprinting in Combat</content>
 	<content contentuid="h66837addgf813g4f54g84e4ge9dd9133c996" Source="" Key="ToggleSprint_CombatSprintingEnabled_Description">Allow sprinting in combat. Sprinting does not affect movement AP costs, so this setting purely speeds up combat.</content>

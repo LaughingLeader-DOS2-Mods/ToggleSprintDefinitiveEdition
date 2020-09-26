@@ -1,7 +1,7 @@
 Key	Content	Handle
 ToggleSprint_AddSkillToSummons	Add Sprint Skill to Summons	hbce60dc9g0641g4463gb503g951338bd4664
 ToggleSprint_AddSkillToSummons_Description	Automatically add the toggle sprint skill to summons.	hd303f812gecd8g4b87ga4fag33bb62ef5e9a
-ToggleSprint_AutoAddSprintSkillDisabled	Disable Adding Sprint Skill	he22f2fcbg0000g46cbga04fg3d271e3f9a9e
+ToggleSprint_AutoAddSprintSkillDisabled	Disable Automatically Adding Sprint Skill	he22f2fcbg0000g46cbga04fg3d271e3f9a9e
 ToggleSprint_AutoAddSprintSkillDisabled_Description	Disable automatically adding the toggle sprint skill. Useful if sprinting is enabled by default.	h84578323gd0b0g4757ga80bg58d8eb0733cd
 ToggleSprint_CombatSprintingEnabled	Enable Sprinting in Combat	h8f12510egd3cfg498bgae59g41b01d3b1105
 ToggleSprint_CombatSprintingEnabled_Description	Allow sprinting in combat. Sprinting does not affect movement AP costs, so this setting purely speeds up combat.	h66837addgf813g4f54g84e4ge9dd9133c996
