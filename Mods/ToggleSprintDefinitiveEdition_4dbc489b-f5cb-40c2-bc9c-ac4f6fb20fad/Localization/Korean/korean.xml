@@ -1,117 +1,117 @@
 <contentList>
-	<content contentuid="h6aee7d39g278eg4da1g94dfg640b4cc5a5b4" Source="">Use to open the Toggle Sprint settings menu.</content>
-	<content contentuid="h4dc44e34g63f5g4adcg9c7eg1f5679e68ffc" Source="">Toggle Sprint Settings</content>
-	<content contentuid="h4a464e9dgb040g4cdegb612g5594473c2ef7" Source="" Key="LLSPRINT_LADDERSPRINT_Description">Character is bounding up a ladder at incredible speed!</content>
-	<content contentuid="hef80b4d5g2705g472dg8688g0ff9cb24e01f" Source="" Key="LLSPRINT_LADDERSPRINT_DisplayName">Ladder Sprinting</content>
-	<content contentuid="h8ab32987g3218g4d5fgb569g1dd98bf52280" Source="" Key="LLSPRINT_Mod_Description">Toggle Sprint increases the default running speed in a way that&amp;apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.</content>
-	<content contentuid="ha3aeaea6gf95fg4409gb24eg7ade1fca2b0f" Source="" Key="LLSPRINT_Mod_DisplayName">Toggle Sprint - Definitive Edition</content>
-	<content contentuid="h2e8c23e6g31a1g4f25gbe50g51db0f7e33d9" Source="" Key="LLSPRINT_StatusText_SettingsBlocked">&lt;font color=&apos;#FF0000&apos;&gt;*You can&apos;t use that in combat!*&lt;/font&gt;</content>
-	<content contentuid="hd50363ccg9e68g4f15gb949gcb12bdf88277" Source="" Key="LLSPRINT_StatusText_SprintingDisabled">&lt;font color=&apos;#FF6347&apos;&gt;Sprinting Disabled&lt;/font&gt;</content>
-	<content contentuid="hbe25784dg569fg47c5ga016gf70821c8ef87" Source="" Key="LLSPRINT_StatusText_SprintingEnabled">&lt;font color=&apos;#00FF00&apos;&gt;Sprinting&lt;/font&gt;</content>
-	<content contentuid="h8fcbe065g8787g42fcg8f40gb686c30dba4f" Source="" Key="LLSPRINT_TOGGLESPRINT_INFO_Description">Character is sprinting.</content>
-	<content contentuid="h2d5294cfgc94fg47cdgaad5g5e3f1115becf" Source="" Key="LLSPRINT_TOGGLESPRINT_INFO_DisplayName">Sprinting</content>
-	<content contentuid="hae669d90gf394g405ag8e4egb15ff02f73bb" Source="">Open Settings Menu</content>
-	<content contentuid="h0e7385cbg2cf3g449fgacc7g4e6f9c58e67e" Source="">*Take your leave.*</content>
-	<content contentuid="h13624675gd10bg4e9bg816ag6b4d90d0bcc4" Source="">Hello!</content>
-	<content contentuid="hba191917gd071g4e5cg9245g643e7c0d4b0d" Source="">Follow me.</content>
-	<content contentuid="h1e42c41dg7cd8g4f33g89cbgcacc7a0dc55c" Source="">Okay.</content>
-	<content contentuid="h511dccf3g99bbg4d54g99e8g10a8d4febe3a" Source="">Let&apos;s part ways.</content>
-	<content contentuid="h03c552b4g5ef6g45c1g8167gdc6c550245ee" Source="">[LLSPRINT_Speed01_466add38-bab6-446c-90f0-9f067886a734]</content>
-	<content contentuid="hcdbca47fgd068g490bg9412g55b5de5e2fbb" Source="">Loading menu...</content>
-	<content contentuid="ha56c5d97g670cg4ce3ga923gb9452771a69f" Source="">Clear Speed Override</content>
-	<content contentuid="hab8f2ca6gb098g49bagb37bg050a7d72760e" Source="">[LLSPRINT_Speed11_ca8453d5-8330-4148-98e5-04f93b424ccb]</content>
-	<content contentuid="h5239218cg520eg4970g8e69g81c169b8a589" Source="">Settings updated.</content>
-	<content contentuid="hdd9c52eeg697fg4461gaea5g0807aad8890c" Source="">[GLOBAL] Enable Automatically Adding Sprint Skill to Party Members (Default)</content>
-	<content contentuid="h53adc312g3824g4169gad25g04c2b3f569ae" Source="">[Speed] Set Party Walk Speed</content>
-	<content contentuid="h382df56eg0e78g4b61g8b31gc6abd691aedb" Source="">Party speed reset.</content>
-	<content contentuid="hb5eb863dg3876g43b1gbc30g9f06d72d8ded" Source="">[Back]</content>
-	<content contentuid="h0adb51c0gd539g4df1g98feg4e7b114c0966" Source="">Commands</content>
-	<content contentuid="h31eb4216g5dcfg4b0fg9221g37b6cb5da827" Source="">[LLSPRINT_Speed03_c176cda1-3ce5-401d-bcba-10d9f136e3ec]</content>
-	<content contentuid="ha250fd5bg94b5g4addga30fg72bc1ea3f77e" Source="">Remove Toggle Sprint Skill</content>
-	<content contentuid="ha4d0f3f9g22bag44cfgbc5fgabf307910e6c" Source="">[Exit]</content>
-	<content contentuid="ha9e54334gcf28g4a67g8ef6gaa400d19d772" Source="">Host Settings</content>
-	<content contentuid="hb590af97ga29ag43a0ga025g0000e54d9b61" Source="">[GLOBAL] Enable Sprinting In Combat. Sprinting does not alter AP costs.</content>
-	<content contentuid="h46a643f9ge410g4250gbb33g954a1c426fdc" Source="">[LLSPRINT_Speed09_4893730f-1deb-41a4-bae3-d7e7ed3d67f5]</content>
-	<content contentuid="h4290e515g89e9g4444g8db2gdf919fcfb6a5" Source="">[GLOBAL] Enable NPC Combat Sprinting - Non-player characters in combat will use the NPC sprinting speed set.</content>
-	<content contentuid="h08533935g049ag4f95gb347g3491e45ad2eb" Source="">Ladder Sprinting Settings</content>
-	<content contentuid="h672fcb27gdcc8g41bcgb549g26f7d6e8964b" Source="">[RESET] Reset Party Speed to Default</content>
-	<content contentuid="hea89f5f1g9212g47afgb2e2gec484cc8b891" Source="">Enable Sprinting Status Text</content>
-	<content contentuid="h0e53ce6ag784bg430ag9688g2a406357d5ad" Source="">Enable Adding Toggle Skill to Summons Automatically</content>
-	<content contentuid="h1de60a5fg9a67g4763ga717gd9367f293596" Source="">[LLSPRINT_Speed05_f5c50ba6-f41f-40a0-951a-9bb97d0569ad]</content>
-	<content contentuid="h88c78669geef8g49e8ga6d2g95f1030999d2" Source="">[GLOBAL] Enable NPC Walking Speed Override in Combat - Non-player characters in combat will use the walking speed set.</content>
-	<content contentuid="hbe2be67bgb1a3g4dbfgb6e2g487ea8ff5eaf" Source="">[Speed] Set NPC Sprinting Speed for Combat</content>
-	<content contentuid="hfe075c4cgf6a3g4c96g9afeg76928529f4a8" Source="">Running command...</content>
-	<content contentuid="h0df31284g1395g4187g8e18gf842fc963f16" Source="">Ladder Sprinting Settings</content>
-	<content contentuid="h23f2b69eg735dg4ea9g9901g39ab70521e8b" Source="">Enable Ladder Sprinting (Automatic increased speed when on a ladder). (Default)</content>
-	<content contentuid="hb00f016agfbb0g4966ga4fagd1b364fab19d" Source="">Disable Sprinting Status Text</content>
-	<content contentuid="h278a6947g3424g405bgaffeg79262d956187" Source="">[LLSPRINT_Speed08_fc6eaba6-f64f-4acf-83d7-167c1acf082f]</content>
-	<content contentuid="h59353848g299ag4a84ga3afgff925401cc4b" Source="">[Speed] Set Party Sprint Speed</content>
-	<content contentuid="hdd57b510g77c6g4e5cgb1d1g0a145675846f" Source="">Enable Faster Ladder Sprinting (50% -&gt; 80%).</content>
-	<content contentuid="h7863e8eegc4c8g4e0bgac67g064d888e5dd1" Source="">[Speed] Set Character Sprint Speed</content>
-	<content contentuid="h7be62dadgfc66g490dga65egf1b9af7347d6" Source="">Disable Ladder Sprinting (Automatic increased speed when on a ladder).</content>
-	<content contentuid="h76a7079fg59a5g402fgabb5g07681b18059a" Source="">[LLSPRINT_Speed07_b21b24c7-6a19-4f69-a852-0820ae31e8c8]</content>
-	<content contentuid="hc368e1ebge876g4cc5g93c9g65014bee5925" Source="">Speed override cleared.</content>
-	<content contentuid="h4f6e6b3cg09b3g45e5gb77egbb89f6f40ddf" Source="">Commands Menu</content>
-	<content contentuid="h7ff12c81g4b92g4f5dgb843g79b928cb2b70" Source="">Confirm</content>
-	<content contentuid="hc542b422gb582g4502g80abg1967eead9f9d" Source="">Speed updated.</content>
-	<content contentuid="h5c2d03f2g3f12g4a55g95d6gf9187ba35d93" Source="">[LLSPRINT_Speed06_fcacc826-a01b-429e-8247-cf03d4eee922]</content>
-	<content contentuid="hb54d2437gdc5dg4219ga44cg11b2f4d74a77" Source="">[GLOBAL] Disable Automatically Adding Sprint Skill to Party Members</content>
-	<content contentuid="hcd3cc287gdb28g4e61gbfd5g35d2fbc09e61" Source="">[LLSPRINT_CurrentMenu_51342cd2-87c7-49a0-8ab5-94e19e5b2155]&lt;br&gt;Current Speed: [LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c]&lt;br&gt;Default Speed: [LLSPRINT_DOS2_DefaultSpeed_e21bd799-d097-434e-9967-68ad9d9ff09e] (DOS2), [LLSPRINT_DefaultSpeed_d3f971ea-c465-45d4-ab08-27593e1e9ac4] (Toggle Sprint)</content>
-	<content contentuid="h2f19d8ccg2f3fg45fbg8062gb427ffab0ae1" Source="">[GLOBAL] Disable Sprinting In Combat</content>
-	<content contentuid="hf62f44d7gac25g4b3ag8a99g91a5abb980f0" Source="">Add Toggle Sprint Settings Book</content>
-	<content contentuid="h5e1ac55ag0b9bg4942g8ea9gc6e81eb8cb82" Source="">[LLSPRINT_Speed00_c9ddbb10-7213-48e2-904a-2b7ec049beef]</content>
-	<content contentuid="h25b046f7g4947g48edg9faegbd12ef7f9307" Source="">[Toggle Sprint] Settings Menu</content>
-	<content contentuid="hcd4f0071gb23dg4392g9f62g55b858a2e7db" Source="">[GLOBAL] Disable NPC Walking Speed Override in Combat</content>
-	<content contentuid="h26aed5fag15efg46e9g9076g78ef583c18d4" Source="">[GLOBAL] Disable Character Speed Overriding</content>
-	<content contentuid="h9d202dd9g3749g45c7gaec2g0314e043dfda" Source="">[GLOBAL] Enable Sprinting Status Visibility for Party</content>
-	<content contentuid="h2d015f06gdd5eg4c9fgb2e6g898c2805454d" Source="">Cancel</content>
-	<content contentuid="h7a9c32a8ge045g4840ga281g432e0c857712" Source="">[LLSPRINT_Speed02_5c20442d-b73a-45f0-a22a-569958263c1b]</content>
-	<content contentuid="h58734195g4469g4e04gbaeag66d946ce7f68" Source="">[LLSPRINT_Speed10_4efd0366-0bc5-405a-8861-038778201a2a]</content>
-	<content contentuid="hd7d87fdcg164fg497ag8b97g61c5f6f47303" Source="">[LLSPRINT_Speed12_1c2839f9-3e48-48e7-8b60-b159ce2e64b7]</content>
-	<content contentuid="h960332b6g8dcag42d1gb8ebgc5dc63aa7e6d" Source="">User Settings</content>
-	<content contentuid="h1d3eeb28gebd6g4fbfg866ag7e5f5fd4ae05" Source="">[SETUP] Open Setup Menu</content>
-	<content contentuid="h6bfe874eg6a4fg4cfaga382g62fd27b4c1d7" Source="">Opening setup menu...</content>
-	<content contentuid="h14037a8fgf467g4d8bg81beg33b860cfe1f1" Source="">[GLOBAL] Enable Character Speed Overriding - This allows characters to have an individual sprint speed that differs from the party.</content>
-	<content contentuid="h25ec545dgfbd9g404bgbd0ag496deab1874e" Source="">[GLOBAL] Disable Sprinting Status Visibility for Party</content>
-	<content contentuid="h39ee7157gb0f5g4034g8322gc82c53cfae1a" Source="">[LLSPRINT_Speed04_885b4609-c38d-46d4-bb5a-e61087b58280]</content>
-	<content contentuid="h0ebe9015g7406g4a4agae2agaba3a9272c32" Source="">[GLOBAL] Disable NPC Combat Sprinting</content>
-	<content contentuid="h21c2062eg75f8g4adaga29bg0ffd9efd2c0e" Source="">Reset party&apos;s speed to default?</content>
-	<content contentuid="h8cf85135g081cg4edbga8c9g99674afc0c21" Source="">Disabling Adding Toggle Skill to Summons Automatically</content>
-	<content contentuid="h799b6d97ga7beg4a3bg884dg018a804cfcdd" Source="">[Speed] Set NPC Walking Speed for Combat</content>
-	<content contentuid="hda553760gbb91g4b3cg8a59g9d0648f3838c" Source="">Add Toggle Sprint Skill</content>
-	<content contentuid="hd160ec4cg90c3g4fbeg98fcg78b34c89fb2f" Source="">Disable Faster Ladder Sprinting (80% -&gt; 40%). (Default)</content>
-	<content contentuid="h591e6fb7g549ag4848g8377g4d7166bc0825" Source="">[LLSPRINT_Speed13_c9a462e0-07cc-4d2f-bb15-b1119739ab21]</content>
-	<content contentuid="h05d1db3ag3d34g422cgaa2eg5ab5838f5678" Source="">Use [Recommended] Settings - Sprinting is enabled by default, sprinting is enabled in combat, and non-player characters in combat have increased movement speed (does not affect AP costs).</content>
-	<content contentuid="h07b37cd6g0589g4802gbf88g17d753f8f88d" Source="">Open settings menu.</content>
-	<content contentuid="hf7e41addg8240g44a5g96c5g60417bfb68db" Source="">Setup complete.</content>
-	<content contentuid="h2b35cac9g2152g463agb3a5gc6503d844443" Source="">[Custom] Take me to the settings menu so I can configure my own settings.</content>
-	<content contentuid="he2ff7ee4g0e25g4e30gb613g2e3665c35d82" Source="">Use [Advanced] Settings - All recommended settings are enabled, individual characters can override their sprinting speeds, and the sprinting status is hidden.</content>
-	<content contentuid="h952f5c05gbc15g45e3gbf74g91ce65198160" Source="">[Toggle Sprint] First Time Setup</content>
-	<content contentuid="h08b2ad11g1307g4ebag9544g3d7bdd4f2d24" Source="">Use [Lite] Settings - Sprinting is enabled by default, NPCs in combat use their default speed, and disable optional settings.</content>
-	<content contentuid="hbce60dc9g0641g4463gb503g951338bd4664" Source="" Key="ToggleSprint_AddSkillToSummons">Add Sprint Skill to Summons</content>
-	<content contentuid="hd303f812gecd8g4b87ga4fag33bb62ef5e9a" Source="" Key="ToggleSprint_AddSkillToSummons_Description">Automatically add the toggle sprint skill to summons.</content>
-	<content contentuid="he22f2fcbg0000g46cbga04fg3d271e3f9a9e" Source="" Key="ToggleSprint_AutoAddSprintSkillDisabled">Disable Automatically Adding Sprint Skill</content>
-	<content contentuid="h84578323gd0b0g4757ga80bg58d8eb0733cd" Source="" Key="ToggleSprint_AutoAddSprintSkillDisabled_Description">Disable automatically adding the toggle sprint skill. Useful if sprinting is enabled by default.</content>
-	<content contentuid="h8f12510egd3cfg498bgae59g41b01d3b1105" Source="" Key="ToggleSprint_CombatSprintingEnabled">Enable Sprinting in Combat</content>
-	<content contentuid="h66837addgf813g4f54g84e4ge9dd9133c996" Source="" Key="ToggleSprint_CombatSprintingEnabled_Description">Allow sprinting in combat. Sprinting does not affect movement AP costs, so this setting purely speeds up combat.</content>
-	<content contentuid="h2703eb8dg0e33g43cdgb887g0ed001120233" Source="" Key="ToggleSprint_EnemySprintingEnabled">Enable Enemy Sprinting</content>
-	<content contentuid="h44514f75g75cfg4908gaea8gf32bc9f1c9b5" Source="" Key="ToggleSprint_EnemySprintingEnabled_Description">Allow enemies to sprint with their own speed settings.</content>
-	<content contentuid="hf9044a8fg2884g4a4dg9e7dg06c294606488" Source="" Key="ToggleSprint_EnemyWalkSpeedOverrideEnabled">Enable Enemy Walk Speed Override</content>
-	<content contentuid="h7f1ce91bg95edg4310g98ffg80c972491f86" Source="" Key="ToggleSprint_EnemyWalkSpeedOverrideEnabled_Description">Enable walk speed overrides for enemies. Not recommended since some enemies begin to slide at higher speeds (zombies).</content>
-	<content contentuid="h0cc7b1e5gebb3g4babgaa7egddf30bd3c07d" Source="" Key="ToggleSprint_FasterLadderSprinting">Increase Ladder Sprinting Speed</content>
-	<content contentuid="h3efc5c94g858bg465eg8376g0072b10e0cdd" Source="" Key="ToggleSprint_FasterLadderSprinting_Description">Move at a much faster speed up ladders.</content>
-	<content contentuid="hc7e0d168g8f9cg4253gae68ge69bbc8cdffd" Source="" Key="ToggleSprint_FirstTimeSetupComplete">First Time Setup Complete</content>
-	<content contentuid="h3b486602g34fag4a7bg875eg476529543504" Source="" Key="ToggleSprint_FirstTimeSetupComplete_Description">[Debug] Disable to allow the setup dialog to trigger again when going into the Toggle Sprint dialog menu.</content>
-	<content contentuid="hbfe3ab2dg95a9g46d1ga1f0g1e84dd293189" Source="" Key="ToggleSprint_LadderSprintingDisabled">Disable Ladder Sprinting</content>
-	<content contentuid="he1e3d90ag8ca3g478dg8810gcff7d9d3c50a" Source="" Key="ToggleSprint_LadderSprintingDisabled_Description">Disable moving faster up ladders.</content>
-	<content contentuid="hc388c878gce0dg40b9g8b67g93d2f9023485" Source="" Key="ToggleSprint_SprintingStatusHidden">Hide the Sprinting Status</content>
-	<content contentuid="h3d93811bg16e5g4f1agacebgcba48b6ea0fe" Source="" Key="ToggleSprint_SprintingStatusHidden_Description">Enable to no longer display sprinting as a status. Recommended if you&apos;re also not using the toggle sprint skill.</content>
-	<content contentuid="h2df16413g1dadg41a1gbe43g36db08d9f887" Source="" Key="ToggleSprint_Variables_EnemySprintingSpeed">Enemy Sprinting Speed</content>
-	<content contentuid="h1e194ea5g57ceg4ad5gb0ebg5e9baedf9f96" Source="" Key="ToggleSprint_Variables_EnemySprintingSpeed_Description">The speed at which the enemies move if enemy sprinting is enabled.</content>
-	<content contentuid="hda3cf2a9g55ffg4999ga49agd61f0ab8ad87" Source="" Key="ToggleSprint_Variables_EnemyWalkingSpeed">Enemy Walking Speed</content>
-	<content contentuid="hf7c32145ged7cg48ecgad9egcfc381d5a557" Source="" Key="ToggleSprint_Variables_EnemyWalkingSpeed_Description">The speed at which enemies moves when walking, if enabled.</content>
-	<content contentuid="h1e152f96gb728g43a7g96a0gaf1257e7fc72" Source="" Key="ToggleSprint_Variables_PartySprintingSpeed">Party Sprinting Speed</content>
-	<content contentuid="hc77493fagf4f8g4f24g854bg365292488c73" Source="" Key="ToggleSprint_Variables_PartySprintingSpeed_Description">The speed at which the party moves when sprinting is enabled.</content>
-	<content contentuid="h2e51ada6gece6g4864g890bged320a5f1984" Source="" Key="ToggleSprint_Variables_PartyWalkingSpeed">Party Walking Speed</content>
-	<content contentuid="h72795cb5g7010g468fg9111gef3de577ee3c" Source="" Key="ToggleSprint_Variables_PartyWalkingSpeed_Description">The speed at which the party moves when walking.</content>
+	<content contentuid="h03c552b4g5ef6g45c1g8167gdc6c550245ee">[LLSPRINT_Speed01_466add38-bab6-446c-90f0-9f067886a734]</content>
+	<content contentuid="h05d1db3ag3d34g422cgaa2eg5ab5838f5678">Use [Recommended] Settings - Sprinting is enabled by default, sprinting is enabled in combat, and non-player characters in combat have increased movement speed (does not affect AP costs).</content>
+	<content contentuid="h07b37cd6g0589g4802gbf88g17d753f8f88d">Open settings menu.</content>
+	<content contentuid="h08533935g049ag4f95gb347g3491e45ad2eb">Ladder Sprinting Settings</content>
+	<content contentuid="h08b2ad11g1307g4ebag9544g3d7bdd4f2d24">Use [Lite] Settings - Sprinting is enabled by default, NPCs in combat use their default speed, and disable optional settings.</content>
+	<content contentuid="h0adb51c0gd539g4df1g98feg4e7b114c0966">Commands</content>
+	<content contentuid="h0cc7b1e5gebb3g4babgaa7egddf30bd3c07d">Increase Ladder Sprinting Speed</content>
+	<content contentuid="h0df31284g1395g4187g8e18gf842fc963f16">Ladder Sprinting Settings</content>
+	<content contentuid="h0e53ce6ag784bg430ag9688g2a406357d5ad">Enable Adding Toggle Skill to Summons Automatically</content>
+	<content contentuid="h0e7385cbg2cf3g449fgacc7g4e6f9c58e67e">*Take your leave.*</content>
+	<content contentuid="h0ebe9015g7406g4a4agae2agaba3a9272c32">[GLOBAL] Disable NPC Combat Sprinting</content>
+	<content contentuid="h13624675gd10bg4e9bg816ag6b4d90d0bcc4">Hello!</content>
+	<content contentuid="h14037a8fgf467g4d8bg81beg33b860cfe1f1">[GLOBAL] Enable Character Speed Overriding - This allows characters to have an individual sprint speed that differs from the party.</content>
+	<content contentuid="h1d3eeb28gebd6g4fbfg866ag7e5f5fd4ae05">[SETUP] Open Setup Menu</content>
+	<content contentuid="h1de60a5fg9a67g4763ga717gd9367f293596">[LLSPRINT_Speed05_f5c50ba6-f41f-40a0-951a-9bb97d0569ad]</content>
+	<content contentuid="h1e152f96gb728g43a7g96a0gaf1257e7fc72">Party Sprinting Speed</content>
+	<content contentuid="h1e194ea5g57ceg4ad5gb0ebg5e9baedf9f96">The speed at which the enemies move if enemy sprinting is enabled.</content>
+	<content contentuid="h1e42c41dg7cd8g4f33g89cbgcacc7a0dc55c">Okay.</content>
+	<content contentuid="h21c2062eg75f8g4adaga29bg0ffd9efd2c0e">Reset party&apos;s speed to default?</content>
+	<content contentuid="h23f2b69eg735dg4ea9g9901g39ab70521e8b">Enable Ladder Sprinting (Automatic increased speed when on a ladder). (Default)</content>
+	<content contentuid="h25b046f7g4947g48edg9faegbd12ef7f9307">[Toggle Sprint] Settings Menu</content>
+	<content contentuid="h25ec545dgfbd9g404bgbd0ag496deab1874e">[GLOBAL] Disable Sprinting Status Visibility for Party</content>
+	<content contentuid="h26aed5fag15efg46e9g9076g78ef583c18d4">[GLOBAL] Disable Character Speed Overriding</content>
+	<content contentuid="h2703eb8dg0e33g43cdgb887g0ed001120233">Enable Enemy Sprinting</content>
+	<content contentuid="h278a6947g3424g405bgaffeg79262d956187">[LLSPRINT_Speed08_fc6eaba6-f64f-4acf-83d7-167c1acf082f]</content>
+	<content contentuid="h2b35cac9g2152g463agb3a5gc6503d844443">[Custom] Take me to the settings menu so I can configure my own settings.</content>
+	<content contentuid="h2d015f06gdd5eg4c9fgb2e6g898c2805454d">Cancel</content>
+	<content contentuid="h2d5294cfgc94fg47cdgaad5g5e3f1115becf">Sprinting</content>
+	<content contentuid="h2df16413g1dadg41a1gbe43g36db08d9f887">Enemy Sprinting Speed</content>
+	<content contentuid="h2e51ada6gece6g4864g890bged320a5f1984">Party Walking Speed</content>
+	<content contentuid="h2e8c23e6g31a1g4f25gbe50g51db0f7e33d9">&lt;font color=&apos;#FF0000&apos;&gt;*You can&apos;t use that in combat!*&lt;/font&gt;</content>
+	<content contentuid="h2f19d8ccg2f3fg45fbg8062gb427ffab0ae1">[GLOBAL] Disable Sprinting In Combat</content>
+	<content contentuid="h31eb4216g5dcfg4b0fg9221g37b6cb5da827">[LLSPRINT_Speed03_c176cda1-3ce5-401d-bcba-10d9f136e3ec]</content>
+	<content contentuid="h382df56eg0e78g4b61g8b31gc6abd691aedb">Party speed reset.</content>
+	<content contentuid="h39ee7157gb0f5g4034g8322gc82c53cfae1a">[LLSPRINT_Speed04_885b4609-c38d-46d4-bb5a-e61087b58280]</content>
+	<content contentuid="h3b486602g34fag4a7bg875eg476529543504">[Debug] Enable to allow the setup dialog to trigger again when going into the Toggle Sprint dialog menu.</content>
+	<content contentuid="h3d93811bg16e5g4f1agacebgcba48b6ea0fe">Enable to no longer display sprinting as a status. Recommended if you&apos;re also not using the toggle sprint skill.</content>
+	<content contentuid="h3efc5c94g858bg465eg8376g0072b10e0cdd">Move at a much faster speed up ladders.</content>
+	<content contentuid="h4290e515g89e9g4444g8db2gdf919fcfb6a5">[GLOBAL] Enable NPC Combat Sprinting - Non-player characters in combat will use the NPC sprinting speed set.</content>
+	<content contentuid="h44514f75g75cfg4908gaea8gf32bc9f1c9b5">Allow enemies to sprint with their own speed settings.</content>
+	<content contentuid="h46a643f9ge410g4250gbb33g954a1c426fdc">[LLSPRINT_Speed09_4893730f-1deb-41a4-bae3-d7e7ed3d67f5]</content>
+	<content contentuid="h4a464e9dgb040g4cdegb612g5594473c2ef7">Character is bounding up a ladder at incredible speed!</content>
+	<content contentuid="h4dc44e34g63f5g4adcg9c7eg1f5679e68ffc">Toggle Sprint Settings</content>
+	<content contentuid="h4f6e6b3cg09b3g45e5gb77egbb89f6f40ddf">Commands Menu</content>
+	<content contentuid="h511dccf3g99bbg4d54g99e8g10a8d4febe3a">Let&apos;s part ways.</content>
+	<content contentuid="h5239218cg520eg4970g8e69g81c169b8a589">Settings updated.</content>
+	<content contentuid="h53adc312g3824g4169gad25g04c2b3f569ae">[Speed] Set Party Walk Speed</content>
+	<content contentuid="h58734195g4469g4e04gbaeag66d946ce7f68">[LLSPRINT_Speed10_4efd0366-0bc5-405a-8861-038778201a2a]</content>
+	<content contentuid="h591e6fb7g549ag4848g8377g4d7166bc0825">[LLSPRINT_Speed13_c9a462e0-07cc-4d2f-bb15-b1119739ab21]</content>
+	<content contentuid="h59353848g299ag4a84ga3afgff925401cc4b">[Speed] Set Party Sprint Speed</content>
+	<content contentuid="h5c2d03f2g3f12g4a55g95d6gf9187ba35d93">[LLSPRINT_Speed06_fcacc826-a01b-429e-8247-cf03d4eee922]</content>
+	<content contentuid="h5e1ac55ag0b9bg4942g8ea9gc6e81eb8cb82">[LLSPRINT_Speed00_c9ddbb10-7213-48e2-904a-2b7ec049beef]</content>
+	<content contentuid="h66837addgf813g4f54g84e4ge9dd9133c996">Allow sprinting in combat. Sprinting does not affect movement AP costs, so this setting purely speeds up combat.</content>
+	<content contentuid="h672fcb27gdcc8g41bcgb549g26f7d6e8964b">[RESET] Reset Party Speed to Default</content>
+	<content contentuid="h6aee7d39g278eg4da1g94dfg640b4cc5a5b4">Use to open the Toggle Sprint settings menu.</content>
+	<content contentuid="h6bfe874eg6a4fg4cfaga382g62fd27b4c1d7">Opening setup menu...</content>
+	<content contentuid="h72795cb5g7010g468fg9111gef3de577ee3c">The speed at which the party moves when walking.</content>
+	<content contentuid="h76a7079fg59a5g402fgabb5g07681b18059a">[LLSPRINT_Speed07_b21b24c7-6a19-4f69-a852-0820ae31e8c8]</content>
+	<content contentuid="h7863e8eegc4c8g4e0bgac67g064d888e5dd1">[Speed] Set Character Sprint Speed</content>
+	<content contentuid="h799b6d97ga7beg4a3bg884dg018a804cfcdd">[Speed] Set NPC Walking Speed for Combat</content>
+	<content contentuid="h7a9c32a8ge045g4840ga281g432e0c857712">[LLSPRINT_Speed02_5c20442d-b73a-45f0-a22a-569958263c1b]</content>
+	<content contentuid="h7be62dadgfc66g490dga65egf1b9af7347d6">Disable Ladder Sprinting (Automatic increased speed when on a ladder).</content>
+	<content contentuid="h7f1ce91bg95edg4310g98ffg80c972491f86">Enable walk speed overrides for enemies. Not recommended since some enemies begin to slide at higher speeds (zombies).</content>
+	<content contentuid="h7ff12c81g4b92g4f5dgb843g79b928cb2b70">Confirm</content>
+	<content contentuid="h84578323gd0b0g4757ga80bg58d8eb0733cd">The toggle sprint skill will be automatially added to party members. Not necessarily needed if you intend to always be sprinting.</content>
+	<content contentuid="h88c78669geef8g49e8ga6d2g95f1030999d2">[GLOBAL] Enable NPC Walking Speed Override in Combat - Non-player characters in combat will use the walking speed set.</content>
+	<content contentuid="h8ab32987g3218g4d5fgb569g1dd98bf52280">Toggle Sprint increases the default running speed in a way that&amp;apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.</content>
+	<content contentuid="h8cf85135g081cg4edbga8c9g99674afc0c21">Disabling Adding Toggle Skill to Summons Automatically</content>
+	<content contentuid="h8f12510egd3cfg498bgae59g41b01d3b1105">Enable Sprinting in Combat</content>
+	<content contentuid="h8fcbe065g8787g42fcg8f40gb686c30dba4f">Character is sprinting.</content>
+	<content contentuid="h952f5c05gbc15g45e3gbf74g91ce65198160">[Toggle Sprint] First Time Setup</content>
+	<content contentuid="h960332b6g8dcag42d1gb8ebgc5dc63aa7e6d">User Settings</content>
+	<content contentuid="h9d202dd9g3749g45c7gaec2g0314e043dfda">[GLOBAL] Enable Sprinting Status Visibility for Party</content>
+	<content contentuid="ha250fd5bg94b5g4addga30fg72bc1ea3f77e">Remove Toggle Sprint Skill</content>
+	<content contentuid="ha3aeaea6gf95fg4409gb24eg7ade1fca2b0f">Toggle Sprint - Definitive Edition</content>
+	<content contentuid="ha4d0f3f9g22bag44cfgbc5fgabf307910e6c">[Exit]</content>
+	<content contentuid="ha56c5d97g670cg4ce3ga923gb9452771a69f">Clear Speed Override</content>
+	<content contentuid="ha9e54334gcf28g4a67g8ef6gaa400d19d772">Host Settings</content>
+	<content contentuid="hab8f2ca6gb098g49bagb37bg050a7d72760e">[LLSPRINT_Speed11_ca8453d5-8330-4148-98e5-04f93b424ccb]</content>
+	<content contentuid="hae669d90gf394g405ag8e4egb15ff02f73bb">Open Settings Menu</content>
+	<content contentuid="hb00f016agfbb0g4966ga4fagd1b364fab19d">Disable Sprinting Status Text</content>
+	<content contentuid="hb54d2437gdc5dg4219ga44cg11b2f4d74a77">[GLOBAL] Disable Automatically Adding Sprint Skill to Party Members</content>
+	<content contentuid="hb590af97ga29ag43a0ga025g0000e54d9b61">[GLOBAL] Enable Sprinting In Combat. Sprinting does not alter AP costs.</content>
+	<content contentuid="hb5eb863dg3876g43b1gbc30g9f06d72d8ded">[Back]</content>
+	<content contentuid="hba191917gd071g4e5cg9245g643e7c0d4b0d">Follow me.</content>
+	<content contentuid="hbce60dc9g0641g4463gb503g951338bd4664">Add Sprint Skill to Summons</content>
+	<content contentuid="hbe25784dg569fg47c5ga016gf70821c8ef87">&lt;font color=&apos;#00FF00&apos;&gt;Sprinting&lt;/font&gt;</content>
+	<content contentuid="hbe2be67bgb1a3g4dbfgb6e2g487ea8ff5eaf">[Speed] Set NPC Sprinting Speed for Combat</content>
+	<content contentuid="hbfe3ab2dg95a9g46d1ga1f0g1e84dd293189">Enable Ladder Sprinting</content>
+	<content contentuid="hc368e1ebge876g4cc5g93c9g65014bee5925">Speed override cleared.</content>
+	<content contentuid="hc388c878gce0dg40b9g8b67g93d2f9023485">Hide the Sprinting Status</content>
+	<content contentuid="hc542b422gb582g4502g80abg1967eead9f9d">Speed updated.</content>
+	<content contentuid="hc77493fagf4f8g4f24g854bg365292488c73">The speed at which the party moves when sprinting is enabled.</content>
+	<content contentuid="hc7e0d168g8f9cg4253gae68ge69bbc8cdffd">First Time Setup Complete</content>
+	<content contentuid="hcd3cc287gdb28g4e61gbfd5g35d2fbc09e61">[LLSPRINT_CurrentMenu_51342cd2-87c7-49a0-8ab5-94e19e5b2155]&lt;br&gt;Current Speed: [LLSPRINT_CurrentSpeed_ababef8c-c917-4fc2-8140-4d154cf6b49c]&lt;br&gt;Default Speed: [LLSPRINT_DOS2_DefaultSpeed_e21bd799-d097-434e-9967-68ad9d9ff09e] (DOS2), [LLSPRINT_DefaultSpeed_d3f971ea-c465-45d4-ab08-27593e1e9ac4] (Toggle Sprint)</content>
+	<content contentuid="hcd4f0071gb23dg4392g9f62g55b858a2e7db">[GLOBAL] Disable NPC Walking Speed Override in Combat</content>
+	<content contentuid="hcdbca47fgd068g490bg9412g55b5de5e2fbb">Loading menu...</content>
+	<content contentuid="hd160ec4cg90c3g4fbeg98fcg78b34c89fb2f">Disable Faster Ladder Sprinting (80% -&gt; 40%). (Default)</content>
+	<content contentuid="hd303f812gecd8g4b87ga4fag33bb62ef5e9a">Automatically add the toggle sprint skill to summons.</content>
+	<content contentuid="hd50363ccg9e68g4f15gb949gcb12bdf88277">&lt;font color=&apos;#FF6347&apos;&gt;Sprinting Disabled&lt;/font&gt;</content>
+	<content contentuid="hd7d87fdcg164fg497ag8b97g61c5f6f47303">[LLSPRINT_Speed12_1c2839f9-3e48-48e7-8b60-b159ce2e64b7]</content>
+	<content contentuid="hda3cf2a9g55ffg4999ga49agd61f0ab8ad87">Enemy Walking Speed</content>
+	<content contentuid="hda553760gbb91g4b3cg8a59g9d0648f3838c">Add Toggle Sprint Skill</content>
+	<content contentuid="hdd57b510g77c6g4e5cgb1d1g0a145675846f">Enable Faster Ladder Sprinting (50% -&gt; 80%).</content>
+	<content contentuid="hdd9c52eeg697fg4461gaea5g0807aad8890c">[GLOBAL] Enable Automatically Adding Sprint Skill to Party Members (Default)</content>
+	<content contentuid="he1e3d90ag8ca3g478dg8810gcff7d9d3c50a">Enable moving faster up ladders.</content>
+	<content contentuid="he22f2fcbg0000g46cbga04fg3d271e3f9a9e">Add Sprint Skill</content>
+	<content contentuid="he2ff7ee4g0e25g4e30gb613g2e3665c35d82">Use [Advanced] Settings - All recommended settings are enabled, individual characters can override their sprinting speeds, and the sprinting status is hidden.</content>
+	<content contentuid="hea89f5f1g9212g47afgb2e2gec484cc8b891">Enable Sprinting Status Text</content>
+	<content contentuid="hef80b4d5g2705g472dg8688g0ff9cb24e01f">Ladder Sprinting</content>
+	<content contentuid="hf62f44d7gac25g4b3ag8a99g91a5abb980f0">Add Toggle Sprint Settings Book</content>
+	<content contentuid="hf7c32145ged7cg48ecgad9egcfc381d5a557">The speed at which enemies moves when walking, if enabled.</content>
+	<content contentuid="hf7e41addg8240g44a5g96c5g60417bfb68db">Setup complete.</content>
+	<content contentuid="hf9044a8fg2884g4a4dg9e7dg06c294606488">Enable Enemy Walk Speed Override</content>
+	<content contentuid="hfe075c4cgf6a3g4c96g9afeg76928529f4a8">Running command...</content>
 </contentList>
