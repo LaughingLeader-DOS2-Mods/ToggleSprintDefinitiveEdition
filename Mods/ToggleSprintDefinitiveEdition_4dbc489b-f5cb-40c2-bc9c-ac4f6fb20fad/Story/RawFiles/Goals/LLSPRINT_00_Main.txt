@@ -762,7 +762,7 @@ CharacterGetHostCharacter(_Host)
 THEN
 SetStoryEvent(_Host, "LeaderLib_Commands_SaveGlobalSettings");
 
-/*
+/* 
 PROC
 LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed")
 AND
@@ -773,6 +773,40 @@ AND
 Integer(_Speed, _SpeedInt)
 THEN
 DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed")
+AND
+DB_ToggleSprint_PartyWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed")
+AND
+DB_ToggleSprint_EnemySprintingSpeed(_Flag)
+AND
+DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", _SpeedInt);
+
+PROC
+LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed")
+AND
+DB_ToggleSprint_EnemyWalkingSpeed(_Flag)
+AND
+DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
+AND
+Integer(_Speed, _SpeedInt)
+THEN
+DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", _SpeedInt);
+*/
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", (INTEGER)_Speed)
@@ -788,17 +822,6 @@ THEN
 LLSPRINT_SetPartySpeed(_Flag);
 
 PROC
-LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed")
-AND
-DB_ToggleSprint_PartyWalkingSpeed(_Flag)
-AND
-DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
-AND
-Integer(_Speed, _SpeedInt)
-THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", _SpeedInt);
-
-PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartyWalkingSpeed", (INTEGER)_Speed)
 AND
 IntegerMax(_Speed, 2, _ClampedA)
@@ -810,17 +833,6 @@ AND
 DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedR)
 THEN
 LLSPRINT_SetPartyWalkSpeed(_Flag);
-
-PROC
-LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed")
-AND
-DB_ToggleSprint_EnemySprintingSpeed(_Flag)
-AND
-DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _Speed)
-AND
-Integer(_Speed, _SpeedInt)
-THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", _SpeedInt);
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemySprintingSpeed", (INTEGER)_Speed)
@@ -837,17 +849,6 @@ SysClear("DB_ToggleSprint_EnemySprintingSpeed", 1);
 DB_ToggleSprint_EnemySprintingSpeed(_Flag);
 
 PROC
-LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed")
-AND
-DB_ToggleSprint_EnemyWalkingSpeed(_Flag)
-AND
-DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _Speed)
-AND
-Integer(_Speed, _SpeedInt)
-THEN
-DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", _SpeedInt);
-
-PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", (INTEGER)_Speed)
 AND
 IntegerMax(_Speed, 2, _ClampedA)
@@ -860,7 +861,6 @@ DB_ToggleSprint_WalkingSpeed(_SelectFlag, _Flag, _SpeedR)
 THEN
 SysClear("DB_ToggleSprint_EnemyWalkingSpeed", 1);
 DB_ToggleSprint_EnemyWalkingSpeed(_Flag);
-*/
 //END_REGION
 
 //REGION SAFETY_CHECKS

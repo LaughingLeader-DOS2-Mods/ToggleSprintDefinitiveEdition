@@ -92,6 +92,13 @@ Ext.RegisterListener("SessionLoaded", function()
 				}
 			}}
 		end
+
+		---@param self SettingsData
+		---@param name string
+		---@param data VariableData
+		-- settings.OnVariableSet = function(self, uuid, name, data)
+
+		-- end
 	
 		---@param self SettingsData
 		---@param name string
