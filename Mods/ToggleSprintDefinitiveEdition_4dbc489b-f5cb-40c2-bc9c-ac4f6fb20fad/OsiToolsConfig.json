@@ -1,8 +1,9 @@
 {
-    "RequiredExtensionVersion": 49,
+    "RequiredExtensionVersion": 55,
     "ModTable": "ToggleSprint",
     "FeatureFlags": [
         "OsirisExtensions",
-        "Lua"
+        "Lua",
+        "Preprocessor"
     ]
 }
