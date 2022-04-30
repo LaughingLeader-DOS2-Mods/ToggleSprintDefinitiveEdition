@@ -61,12 +61,14 @@
 	<content contentuid="h799b6d97ga7beg4a3bg884dg018a804cfcdd">[Speed] Set NPC Walking Speed for Combat</content>
 	<content contentuid="h7a9c32a8ge045g4840ga281g432e0c857712">[LLSPRINT_Speed02_5c20442d-b73a-45f0-a22a-569958263c1b]</content>
 	<content contentuid="h7be62dadgfc66g490dga65egf1b9af7347d6">Disable Ladder Sprinting (Automatic increased speed when on a ladder).</content>
+	<content contentuid="h7eb32763g31eag485aga55ag29cb5369c1f5">Speed</content>
 	<content contentuid="h7f1ce91bg95edg4310g98ffg80c972491f86">Enable walk speed overrides for enemies. Not recommended since some enemies begin to slide at higher speeds (zombies).</content>
 	<content contentuid="h7ff12c81g4b92g4f5dgb843g79b928cb2b70">Confirm</content>
 	<content contentuid="h84578323gd0b0g4757ga80bg58d8eb0733cd">The toggle sprint skill will be automatially added to party members. Not necessarily needed if you intend to always be sprinting.</content>
 	<content contentuid="h88c78669geef8g49e8ga6d2g95f1030999d2">[GLOBAL] Enable NPC Walking Speed Override in Combat - Non-player characters in combat will use the walking speed set.</content>
 	<content contentuid="h8ab32987g3218g4d5fgb569g1dd98bf52280">Toggle Sprint increases the default running speed in a way that&amp;apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.</content>
 	<content contentuid="h8cf85135g081cg4edbga8c9g99674afc0c21">Disabling Adding Toggle Skill to Summons Automatically</content>
+	<content contentuid="h8f05246cg0677g4ebdg8fecgc89deaf2c1d9">Features</content>
 	<content contentuid="h8f12510egd3cfg498bgae59g41b01d3b1105">Enable Sprinting in Combat</content>
 	<content contentuid="h8fcbe065g8787g42fcg8f40gb686c30dba4f">Character is sprinting.</content>
 	<content contentuid="h952f5c05gbc15g45e3gbf74g91ce65198160">[Toggle Sprint] First Time Setup</content>
