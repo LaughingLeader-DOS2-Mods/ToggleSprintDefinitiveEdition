@@ -231,6 +231,18 @@ DB_ToggleSprint_SprintingSpeed(_SelectFlag, _Flag, _SpeedVal)
 THEN
 LLSPRINT_SetSpeed(_Player, _SpeedVal);
 LLSPRINT_ToggleSprinting(_Player, 1);
+
+/*Save was loaded in combat with ToggleSprint_CombatSprintingEnabled disabled, so set ToggleSprint_WasSprinting
+to allow sprinting to automatically toggle on when exiting combat.
+*/
+IF
+StoryEvent((CHARACTERGUID)_Player, "ToggleSprint_Events_SetInitialSprinting")
+AND
+CharacterIsInCombat(_Player, 1)
+AND
+GlobalGetFlag("ToggleSprint_CombatSprintingEnabled", 0)
+THEN
+ObjectSetFlag(_Player, "ToggleSprint_WasSprinting", 0);
 //END_REGION
 
 //REGION QUERIES
@@ -297,30 +309,12 @@ ObjectGetFlag(_Character, "ToggleSprint_SprintingEnabled", 1)
 THEN
 DB_NOOP(1);
 
-/*
-QRY
-LLSPRINT_QRY_CharacterIsSprinting((CHARACTERGUID)_Character)
-AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 1)
-THEN
-DB_NOOP(1);
-*/
-
 QRY
 LLSPRINT_QRY_ShouldBeSprinting((CHARACTERGUID)_Character)
 AND
 ObjectGetFlag(_Character, "ToggleSprint_SprintingEnabled", 0)
 THEN
 DB_NOOP(1);
-
-/*
-QRY
-LLSPRINT_QRY_ShouldBeSprinting((CHARACTERGUID)_Character)
-AND
-HasActiveStatus(_Character, "LLSPRINT_TOGGLESPRINT", 0)
-THEN
-DB_NOOP(1);
-*/
 
 QRY
 LLSPRINT_QRY_IgnoreCharacter((CHARACTERGUID)_Character)
