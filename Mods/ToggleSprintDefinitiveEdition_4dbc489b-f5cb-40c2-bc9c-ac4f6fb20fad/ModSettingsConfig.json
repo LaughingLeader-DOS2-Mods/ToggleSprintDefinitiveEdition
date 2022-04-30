@@ -1,0 +1,73 @@
+{
+	"TitleColor": "#00FF00",
+	"Data": {
+		"Flags": [
+			{
+				"Type" : "Global",
+				"Entries" : [
+					"ToggleSprint_AddSkillToSummons",
+					"ToggleSprint_AutoAddSprintSkillDisabled",
+					"ToggleSprint_CombatSprintingEnabled",
+					"ToggleSprint_EnemySprintingEnabled",
+					"ToggleSprint_EnemyWalkSpeedOverrideEnabled",
+					"ToggleSprint_FirstTimeSetupComplete",
+					"ToggleSprint_SprintingStatusHidden",
+					"ToggleSprint_LadderSprintingDisabled",
+					"ToggleSprint_FasterLadderSprinting"
+				]
+			}
+		],
+		"Variables": {
+			"NamePrefix": "ToggleSprint_Variables_",
+			"DefaultMin": 0,
+			"DefaultMax": 99,
+			"Entries": {
+				"PartySprintingSpeed": {
+					"Max": 11,
+					"Min": 4,
+					"Value": 5
+				},
+				"EnemySprintingSpeed": {
+					"Max": 11,
+					"Min": 4,
+					"Value": 5
+				},
+				"PartyWalkingSpeed": {
+					"Max": 9,
+					"Min": 2,
+					"Value": 2
+				},
+				"EnemyWalkingSpeed": {
+					"Max": 9,
+					"Min": 2,
+					"Value": 2
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Name" : "ToggleSprint_SettingsMenu_Section_Speed",
+			"Entries" : [
+				"PartySprintingSpeed",
+				"PartyWalkingSpeed",
+				"ToggleSprint_EnemySprintingEnabled",
+				"EnemySprintingSpeed",
+				"ToggleSprint_EnemyWalkSpeedOverrideEnabled",
+				"EnemyWalkingSpeed"
+			]
+		},
+		{
+			"Name" : "ToggleSprint_SettingsMenu_Section_Misc",
+			"Entries" : [
+				"ToggleSprint_CombatSprintingEnabled",
+				"ToggleSprint_SprintingStatusHidden",
+				"ToggleSprint_LadderSprintingDisabled",
+				"ToggleSprint_FasterLadderSprinting",
+				"ToggleSprint_AutoAddSprintSkillDisabled",
+				"ToggleSprint_AddSkillToSummons",
+				"ToggleSprint_FirstTimeSetupComplete"
+			]
+		}
+	]
+}
