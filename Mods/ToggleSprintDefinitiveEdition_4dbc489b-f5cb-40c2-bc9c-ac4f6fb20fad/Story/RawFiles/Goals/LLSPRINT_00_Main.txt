@@ -756,7 +756,6 @@ CharacterGetHostCharacter(_Host)
 THEN
 SetStoryEvent(_Host, "LeaderLib_Commands_SaveGlobalSettings");
 
-/* 
 PROC
 LeaderLib_GlobalSettings_GetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed")
 AND
@@ -800,7 +799,6 @@ AND
 Integer(_Speed, _SpeedInt)
 THEN
 DB_LeaderLib_ModApi_GlobalSettings_SaveGlobalIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "EnemyWalkingSpeed", _SpeedInt);
-*/
 
 PROC
 LeaderLib_GlobalSettings_SetIntegerVariable(3cdec0ff-5d98-e859-87cd-c663b7b9fcfe, "PartySprintingSpeed", (INTEGER)_Speed)
