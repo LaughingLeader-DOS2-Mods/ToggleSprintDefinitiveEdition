@@ -15,7 +15,7 @@ Toggle Sprint is a quality-of-life mod that features increased, fully-customizab
 * [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/releases/tag/mod-releases) mod menu support.
 
 ## Tips/Notes:  
-* You can access the Settings Menu via the Toggle Sprint Settings book (given to the host, and sold by the [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/) trader).The host should open the settings menu once to run through the setup dialog, which has options for configuration presets!
+* You can access the Settings Menu via the Toggle Sprint Settings book (given to the host, and sold by the [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/) trader). The host should open the settings menu once to run through the setup dialog, which has options for configuration presets!
 
 * Additionally, you can access this menu via the LeaderLib Mod Menu, which is opened with the Mod Menu book, given/sold by the LeaderLib trader.
 
