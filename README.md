@@ -15,9 +15,9 @@ Toggle Sprint is a quality-of-life mod that features increased, fully-customizab
 * [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/releases/tag/mod-releases) mod menu support.
 
 ## Tips/Notes:  
-* You can access the Settings Menu via the Toggle Sprint Settings book (given to the host, and sold by the [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/) trader). The host should open the settings menu once to run through the setup dialog, which has options for configuration presets!
+* You can access the "Settings Menu" (a dialog) via the "Toggle Sprint Settings" book (given to the host, and sold by the [LeaderLib](https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/) trader). The host should open the settings dialog once (via the book or the LeaderLib "Mod Settings" skill) to run through the initial setup dialog, which has options for configuration presets.
 
-* Additionally, you can access this menu via the LeaderLib Mod Menu, which is opened with the Mod Menu book, given/sold by the LeaderLib trader.
+* Additionally, you can access the settings dialog via the LeaderLib Mod Menu, which is opened with the Mod Menu book, given/sold by the LeaderLib trader.
 
 * Toggle Sprint DE speeds up characters in a way that doesn't affect movement cost in battle, so speeding up enemies has no tactical disadvantage, as it purely affects the time it takes to get from A to B.
 
