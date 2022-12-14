@@ -1,6 +1,8 @@
-Key	Content
-LLSPRINT_Mod_Description	Toggle Sprint increases the default running speed in a way that&apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.
-LLSPRINT_Mod_DisplayName	Toggle Sprint - Definitive Edition
-LLSPRINT_StatusText_SettingsBlocked	<font color='#FF0000'>*You can't use that in combat!*</font>
-LLSPRINT_StatusText_SprintingDisabled	<font color='#FF6347'>Sprinting Disabled</font>
-LLSPRINT_StatusText_SprintingEnabled	<font color='#00FF00'>Sprinting</font>
+Key	Content	Handle
+LLSPRINT_Mod_Description	Toggle Sprint increases the default running speed in a way that&apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.	h8ab32987g3218g4d5fgb569g1dd98bf52280
+LLSPRINT_Mod_DisplayName	Toggle Sprint - Definitive Edition	ha3aeaea6gf95fg4409gb24eg7ade1fca2b0f
+LLSPRINT_StatusText_SettingsBlocked	<font color='#FF0000'>*You can't use that in combat!*</font>	h2e8c23e6g31a1g4f25gbe50g51db0f7e33d9
+LLSPRINT_StatusText_SprintingDisabled	<font color='#FF6347'>Sprinting Disabled</font>	hd50363ccg9e68g4f15gb949gcb12bdf88277
+LLSPRINT_StatusText_SprintingEnabled	<font color='#00FF00'>Sprinting</font>	hbe25784dg569fg47c5ga016gf70821c8ef87
+Shout_LLSPRINT_ToggleSprint_DisplayName	Toggle Sprint	h77fe9deag52bdg4aafg9e71g0ee3722da0d8
+Shout_LLSPRINT_ToggleSprint_Description	Enable/disable sprinting.	h4c201ceag187eg492bgb0dbge786cd12d451

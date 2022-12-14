@@ -1,5 +1,5 @@
-Key	Content
-LLSPRINT_TOGGLESPRINT_INFO_DisplayName	Sprinting
-LLSPRINT_TOGGLESPRINT_INFO_Description	Character is sprinting.
-LLSPRINT_LADDERSPRINT_DisplayName	Ladder Sprinting
-LLSPRINT_LADDERSPRINT_Description	Character is bounding up a ladder at incredible speed!
+Key	Content	Handle
+LLSPRINT_LADDERSPRINT_Description	Character is bounding up a ladder at incredible speed!	h4a464e9dgb040g4cdegb612g5594473c2ef7
+LLSPRINT_LADDERSPRINT_DisplayName	Ladder Sprinting	hef80b4d5g2705g472dg8688g0ff9cb24e01f
+LLSPRINT_TOGGLESPRINT_INFO_Description	Character is sprinting.	h8fcbe065g8787g42fcg8f40gb686c30dba4f
+LLSPRINT_TOGGLESPRINT_INFO_DisplayName	Sprinting	h2d5294cfgc94fg47cdgaad5g5e3f1115becf
