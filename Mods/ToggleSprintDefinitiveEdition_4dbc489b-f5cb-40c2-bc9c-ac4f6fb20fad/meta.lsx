@@ -24,7 +24,7 @@
                     <attribute id="Tags" value="Quality of Life" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="3cdec0ff-5d98-e859-87cd-c663b7b9fcfe" type="22" />
-                    <attribute id="Version" value="318832640" type="4" />
+                    <attribute id="Version" value="318832641" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="909321303" type="4" />
