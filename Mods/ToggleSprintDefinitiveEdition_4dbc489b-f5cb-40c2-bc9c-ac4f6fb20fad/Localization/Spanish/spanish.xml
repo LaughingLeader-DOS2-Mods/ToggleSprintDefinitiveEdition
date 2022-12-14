@@ -78,6 +78,7 @@
 	<content contentuid="ha3aeaea6gf95fg4409gb24eg7ade1fca2b0f">Toggle Sprint - Definitive Edition</content>
 	<content contentuid="ha4d0f3f9g22bag44cfgbc5fgabf307910e6c">[Exit]</content>
 	<content contentuid="ha56c5d97g670cg4ce3ga923gb9452771a69f">Clear Speed Override</content>
+	<content contentuid="ha6c5fec5gcc0ag4864g9e7cgee87c3ffc145">Enable/disable sprinting.</content>
 	<content contentuid="ha9e54334gcf28g4a67g8ef6gaa400d19d772">Host Settings</content>
 	<content contentuid="hab8f2ca6gb098g49bagb37bg050a7d72760e">[LLSPRINT_Speed11_ca8453d5-8330-4148-98e5-04f93b424ccb]</content>
 	<content contentuid="hae669d90gf394g405ag8e4egb15ff02f73bb">Open Settings Menu</content>
@@ -109,6 +110,7 @@
 	<content contentuid="he1e3d90ag8ca3g478dg8810gcff7d9d3c50a">Enable moving faster up ladders.</content>
 	<content contentuid="he22f2fcbg0000g46cbga04fg3d271e3f9a9e">Add Sprint Skill</content>
 	<content contentuid="he2ff7ee4g0e25g4e30gb613g2e3665c35d82">Use [Advanced] Settings - All recommended settings are enabled, individual characters can override their sprinting speeds, and the sprinting status is hidden.</content>
+	<content contentuid="he906fb36gd1a6g4ee1ga529g887f7f4d9d82">Toggle Sprint</content>
 	<content contentuid="hea89f5f1g9212g47afgb2e2gec484cc8b891">Enable Sprinting Status Text</content>
 	<content contentuid="hef80b4d5g2705g472dg8688g0ff9cb24e01f">Ladder Sprinting</content>
 	<content contentuid="hf62f44d7gac25g4b3ag8a99g91a5abb980f0">Add Toggle Sprint Settings Book</content>
