@@ -1,0 +1,19 @@
+{
+	"DisplayName": "[Key:LLSPRINT_Mod_DisplayName:Toggle Sprint - Definitive Edition]",
+	"Description": "[Key:LLSPRINT_Mod_Description:Toggle Sprint increases the default running speed in a way that&apos;s customizable. Variable sprinting speeds can be set, sprinting can be toggled off, and more.]",
+	"Entries": [
+		{
+			"Text": "See the full changelog in the 'Change Notes' tab on the Steam Workshop page."
+		},
+		{
+			"Version": "1.3.1.0",
+			"Changes": [
+				"Update Extender and LeaderLib API usage.",
+				"Added string keys for the Toggle Sprint skill.",
+				"Fixed settings not displaying in the LeaderLib Mod Settings menu, in the main menu.",
+				"Made all settings translatable in the LeaderLib Mod Settings menu.",
+				"Added a changelog."
+			]
+		}
+	]
+}
